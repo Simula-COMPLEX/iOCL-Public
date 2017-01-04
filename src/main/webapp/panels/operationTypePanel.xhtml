@@ -1,0 +1,44 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="operationTypePanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Operation Type</h3>
+        </div>
+        <div class="panel-body">
+            <f:metadata>
+                <f:event type="preRenderView" listener="#{property.setOperationType('')}"/>
+            </f:metadata>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p:selectOneRadio id="operationType"
+                                      value="#{property.operationType}"
+                                      disabled="#{panel.disableOperationTypePanel}">
+                        <f:selectItem itemLabel="Comparison Operation"
+                                      itemValue="Comparison"/>
+                        <f:selectItem itemLabel="Arithmetic Operation"
+                                      itemValue="Arithmetic"/>
+                        <f:ajax process="@form" listener="#{operationType.operationTypeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                        <f:selectItem itemLabel="Is Null" itemValue="nullCheck"/>
+
+                        <f:selectItem itemLabel="Is Not Null" itemValue="notNullCheck"/>
+                        <f:selectItem itemLabel="@pre" itemValue="@pre"/>
+                    </p:selectOneRadio>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form"
+                                listener="#{operationType.backOperationTypeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</ui:composition>

@@ -1,0 +1,68 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="predefinedOperationPanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Predefined Operations</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <p:selectOneMenu id="predefinedOperation" value="#{property.predefinedOperation}"
+                                     disabled="#{panel.disablePredefinedOperationPanel}">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+
+                        <f:selectItem itemLabel="Is Null" itemValue="nullCheck"/>
+
+                        <f:selectItem itemLabel="Not Null" itemValue="notNullCheck"/>
+
+                        <f:selectItem itemLabel="Is Empty" itemValue="emptyCheck"/>
+
+                        <f:selectItem itemLabel="Not Empty" itemValue="notemptyCheck"/>
+
+                        <f:selectItem itemLabel="oclIsTypeOf" itemValue="oclIsTypeOf"/>
+
+                        <f:selectItem itemLabel="oclIsKindOf" itemValue="oclIsKindOf"/>
+
+                        <f:selectItem itemLabel="oclIsInState" itemValue="oclIsInState"/>
+
+                        <f:selectItem itemLabel="oclIsNew" itemValue="oclIsNew"/>
+
+                        <f:selectItem itemLabel="oclAsType" itemValue="oclAsType"/>
+
+                        <f:selectItem itemLabel="asSet" itemValue="asSet"/>
+
+                        <f:selectItem itemLabel="closure" itemValue="closure"/>
+
+                        <!-- <f:selectItem itemLabel="Check Type" itemValue="oclIsTypeOf"/>
+
+                         <f:selectItem itemLabel="Check Kind" itemValue="oclIsKindOf"/>
+
+                         <f:selectItem itemLabel="Check State" itemValue="oclIsInState"/>
+
+                         <f:selectItem itemLabel="check oclIsNew" itemValue="oclIsNew"/>
+
+                         <f:selectItem itemLabel="Cast Type" itemValue="oclAsType"/>
+
+                         <f:selectItem itemLabel="Convert to Set" itemValue="asSet"/>-->
+
+                        <f:ajax process="@form" listener="#{predefined.predefinedOperationListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form"
+                                listener="#{predefined.backPredefinedOperationListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ui:composition>

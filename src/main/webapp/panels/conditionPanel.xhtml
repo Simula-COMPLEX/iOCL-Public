@@ -1,0 +1,50 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="conditionPanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Condition Type</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <f:metadata>
+                    <f:event type="preRenderView" listener="#{property.setCondition('')}"/>
+                </f:metadata>
+                <div class="col-lg-8">
+                    <p:selectOneRadio id="condition" value="#{property.condition}" styleClass="radio-button"
+                                      disabled="#{panel.disableConditionPanel }">
+                        <f:selectItem itemLabel="And" itemValue="and"/>
+                        <f:selectItem itemLabel="OR" itemValue="or"/>
+                        <f:selectItem itemLabel="XOR" itemValue="xor"/>
+                        <f:selectItem itemLabel="Implies" itemValue="implies"/>
+
+                        <f:ajax process="@form" listener="#{condition.conditionListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneRadio>
+                    <h:panelGrid rendered="#{! bean.conditionStack.isEmpty()}">
+                        <p:selectOneRadio id="condition2" value="#{property.condition}" styleClass="radio-button"
+                                          disabled="#{panel.disableConditionPanel }">
+                            <f:selectItem itemLabel="#{bean.conditionStack.peek()}"
+                                          itemValue="#{bean.conditionStack.peek()}"/>
+                            <f:ajax process="@form" listener="#{condition.conditionListener}"
+                                    render="requirmentsform switchform staticsform"/>
+                        </p:selectOneRadio>
+                    </h:panelGrid>
+
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form" listener="#{condition.backConditionListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</ui:composition>

@@ -1,0 +1,92 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml"
+>
+    <div class="panel panel-default" id="inputformPanel">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Model Input Panel<a class="pull-right" role="button"
+                                    data-toggle="collapse" href="#inputformPanelBody"
+                                    aria-expanded="false"/>
+            </h3>
+
+        </div>
+        <div class="panel-body" id="inputformPanelBody">
+
+            <h:form id="inputform" prependId="false" enctype="multipart/form-data">
+                <!--  <f:metadata>
+                      <f:event type="preRenderView" listener="#{bean.loadModelExperiment}"/>
+                  </f:metadata>-->
+                <div id="inputPanel"
+                     style="display: #{(panel.disableInputPanel=='true'?'none':'inline')}">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+
+                            <div class="form-inline">
+
+                                <h:outputLabel styleClass="control-label" value="UML Model"
+                                               style="padding-left: 10px;padding-right: 10px"/>
+
+                                <span class="btn btn-raised btn-file fileinput-button">
+                                    <i class="fa fa-upload"></i>
+                                    <span> Select Model </span>
+                                    <h:inputFile id="file" styleClass=""
+                                                 label="Upload Model" value="#{bean.diagram}" required="true"
+                                                 requiredMessage="File not selected !!"/>
+                                </span>
+
+
+                                <div class="form-group">
+                                    <h:commandButton id="submit" styleClass="btn btn-raised btn-success"
+                                                     action="#{bean.loadModel()}" value="Upload Model"
+                                                     data-toggle="collapse" data-target="#updates">
+                                    </h:commandButton>
+
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel styleClass="control-label" value="iOCL Depth Level"
+                                                   style="padding-left: 10px;padding-right: 10px"/>
+                                    <h:inputText id="superClassLevel" querylisvalue="#{bean.depthlevel}"
+                                                 ph:type="number"
+                                                 styleClass="form-control">
+                                        <f:ajax process="@form" listener="#{textValue.textValueListener}"
+                                                event="valueChange" render="requirmentsform switchform staticsform"/>
+                                    </h:inputText>
+                                </div>
+                                <div class="form-group">
+                                    <h:commandButton id="RoyalAndLoyal" styleClass="btn btn-raised btn-info"
+                                                     action="#{bean.royalModel()}" value="Royal And Loyal" type="submit"
+                                                     immediate="true">
+                                    </h:commandButton>
+                                </div>
+
+                                <div class="form-group">
+                                    <h:commandButton id="UML" styleClass="btn btn-raised btn-info"
+                                                     action="#{bean.umlModel()}" value="UML MetaModel" type="submit"
+                                                     immediate="true">
+                                    </h:commandButton>
+                                </div>
+                                <div class="form-group">
+                                    <h:commandButton id="reset" styleClass="btn btn-raised btn-danger"
+                                                     action="#{bean.resetAll()}" value="Reset" type="submit"
+                                                     immediate="true">
+                                    </h:commandButton>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </div>
+
+</ui:composition>

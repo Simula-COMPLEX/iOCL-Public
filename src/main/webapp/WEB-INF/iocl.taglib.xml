@@ -1,0 +1,17 @@
+<facelet-taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                version="2.2"
+                xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd">
+
+    <namespace>http://www.iocl.com/tags</namespace>
+    <tag>
+        <tag-name>panel</tag-name>
+        <source>panel.xhtml</source>
+    </tag>
+    <tag>
+        <tag-name>panel2</tag-name>
+        <component>
+            <component-type>iocl.tags.panel</component-type>
+        </component>
+    </tag>
+</facelet-taglib>

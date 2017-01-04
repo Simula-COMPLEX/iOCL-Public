@@ -1,0 +1,41 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <div id="comparisonTypePanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Comparison Value Type</h3>
+        </div>
+        <div class="panel-body">
+            <f:metadata>
+                <f:event type="preRenderView" listener="#{property.setValueType('')}"/>
+            </f:metadata>
+            <div class="row">
+                <div class="col-lg-9">
+                    <p:selectOneRadio id="valueType" value="#{property.valueType}" styleClass="radio-button"
+                                      disabled="#{panel.disableComparisonTypePanel}">
+                        <f:selectItem itemLabel="By Value" itemValue="value"/>
+                        <f:selectItem itemLabel="By Class" itemValue="class"/>
+                        <f:selectItem itemLabel="By Enumeration" itemValue="enum"/>
+                        <f:selectItem itemLabel="By Paremeters" itemValue="paremeter"/>
+                        <f:ajax process="@form" listener="#{comparisonType.comparisonTypeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneRadio>
+                </div>
+                <div class="col-lg-3">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form"
+                                listener="#{comparisonType.backComparisonTypeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</ui:composition>

@@ -1,0 +1,36 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="enumPanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Enumeration Selection</h3>
+        </div>
+        <div class="panel-body">
+
+            <h:outputLabel value="Value Type: #{property.propertyType}"/>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p:selectOneMenu filter="true" id="enumeration"
+                                     value="#{property.enumeration}"
+                                     disabled="#{panel.disableEnumPanel}">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{property.enumerations}"/>
+                        <f:ajax process="@form" listener="#{enumPanel.enumListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form" listener="#{enumPanel.backEnumListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</ui:composition>

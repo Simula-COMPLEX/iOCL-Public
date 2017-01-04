@@ -1,0 +1,49 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <h3 class="panel-title">
+                Constraint Statistics Panel<a
+                    class="pull-right #{panel.collapseModelPanel=='true'?'collapsed':''}"
+                    role="button" data-toggle="collapse" href="#statics"
+                    aria-expanded="false"/>
+            </h3>
+        </div>
+        <h:form id="staticsform" prependId="false">
+            <div
+                    class="panel-body #{panel.collapseModelPanel=='true'?'collapse':''}"
+                    id="statics">
+                <div class="row"
+                     style="display:#{(panel.disableInformationPanel=='true'?'none':'block')}">
+                    <div class="col-lg-12">
+                        <ul class="list-group">
+                            <li class="list-group-item"><span
+                                    class="badge label label-default label-pill pull-xs-right">#{statics.cost}</span>
+                                Cost
+                            </li>
+                            <li class="list-group-item"><span
+                                    class="badge label label-default label-pill pull-xs-right">#{statics.selection}</span>
+                                Selects
+                            </li>
+                            <li class="list-group-item"><span
+                                    class="badge label label-default label-pill pull-xs-right">#{statics.basicInput}</span>
+                                Basic Input
+                            </li>
+                            <li class="list-group-item"><span
+                                    class="badge label label-default label-pill pull-xs-right">#{statics.textInput}</span>
+                                Text Input
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </div>
+
+
+</ui:composition>

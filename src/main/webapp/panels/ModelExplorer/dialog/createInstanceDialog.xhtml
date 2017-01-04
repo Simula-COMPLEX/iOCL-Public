@@ -1,0 +1,102 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <p:dialog
+            header="Class: #{selectionPanel.selectClassStructure.name}"
+            widgetVar="createInstanceDialog" modal="true" showEffect="fade" closeOnEscape="true"
+            draggable="true"
+            hideEffect="fade" resizable="true">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-inline">
+
+                    <div class="form-group">
+                        <h:outputLabel styleClass="control-label" value="Instace Nmae:"
+                                       style="padding-left: 10px;padding-right: 10px"/>
+                        <h:inputText value="#{selectionPanel.instanceName}"
+                                     styleClass="form-control">
+                        </h:inputText>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+        <div class="row">
+            <div class="col-lg-12">
+                <p:dataTable style="width: 720px" var="attribute" reflow="true"
+                             styleClass="table table-striped table-bordered table-hover"
+                             value="#{selectionPanel.classInstance.attributes}"
+                             rowKey="#{attribute.name}">
+
+                    <p:column headerText="Attribute Name">
+                        <p:outputLabel value="#{attribute.name}"/>
+                    </p:column>
+                    <p:column headerText="Type">
+                        <p:outputLabel value="#{attribute.type}"/>
+                    </p:column>
+                    <p:column headerText="Collection">
+                        <p:outputLabel value="#{attribute.collection}"/>
+                    </p:column>
+                    <p:column headerText="Value">
+                        <p:inputText value="#{attribute.value}" rendered="#{!attribute.isClass and !attribute.isEnum}"/>
+
+                        <p:selectOneMenu style="width: 100%"
+                                         rendered="#{attribute.isClass and !attribute.isCollection and !attribute.isEnum}"
+                                         value="#{attribute.value}">
+                            <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{selectionPanel.getTypeAvailableInstance(attribute.type)}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:selectCheckboxMenu label="Select"
+                                              rendered="#{attribute.isClass and attribute.isCollection and !attribute.isEnum}"
+                                              style="width:100% !important"
+                                              value="#{attribute.values}">
+                            <f:selectItems value="#{selectionPanel.getTypeAvailableInstance(attribute.type)}"/>
+                        </p:selectCheckboxMenu>
+
+                        <p:selectOneMenu style="width: 100%"
+                                         rendered="#{attribute.isEnum and !attribute.isCollection and !attribute.isClass}"
+                                         value="#{attribute.value}">
+                            <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{selectionPanel.getTypeAvailableEnum(attribute.type)}"/>
+                        </p:selectOneMenu>
+
+                        <p:selectCheckboxMenu label="Select"
+                                              rendered="#{attribute.isEnum and attribute.isCollection and !attribute.isClass}"
+                                              style="width:100% !important"
+                                              value="#{attribute.values}">
+                            <f:selectItems value="#{selectionPanel.getTypeAvailableEnum(attribute.type)}"/>
+                        </p:selectCheckboxMenu>
+
+                    </p:column>
+                </p:dataTable>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3">
+                <p:commandButton action="#{selectionPanel.createInstace}" style="width: 100%"
+                                 onclick="PF('classInstanceDialog').hide();"
+                                 update=":requirmentsform :treeform :switchform :staticsform"
+                                 value="Create Intace"/>
+
+            </div>
+            <div class="col-lg-3">
+                <p:commandButton
+                        onclick="PF('classInstanceDialog').hide();" style="width: 100%"
+                        value="Close"/>
+
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </p:dialog>
+
+</ui:composition>

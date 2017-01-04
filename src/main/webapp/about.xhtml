@@ -1,0 +1,38 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="/theme/theme.xhtml">
+    <ui:define name="nav">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <h:link value="About US" outcome="about"/>
+            </li>
+        </ul>
+    </ui:define>
+    <ui:define name="body">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">About US</h3>
+                </div>
+                <div class="panel-body">
+
+
+                    <div class="jumbotron doc">
+
+                        <h1>Any Question ?</h1><br/>
+                        <h3>Contact us:</h3>
+                        <a style="margin-left: 150px;">tao@simula.no</a><br/>
+                        <a style="margin-left: 150px;">shaukat@simula.no</a><br/>
+                        <a style="margin-left: 150px;">hammad@simula.no</a><br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h:outputScript library="bootstrap" name="js/jquery-2.2.3.min.js"/>
+
+    </ui:define>
+</ui:composition>

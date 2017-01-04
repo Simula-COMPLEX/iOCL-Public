@@ -1,0 +1,48 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h:panelGroup rendered="#{bean.priorityStack.size()>0}">
+                <div class="btn-group btn-group-justified btn-group-raised">
+
+                    <h:commandLink value="Close Bracket" styleClass="btn "
+                                   disabled="#{bean.priorityStack.peek().equals('parenthesis')?'false':'true'}"
+                                   style="display:#{bean.priorityStack.peek().equals('parenthesis')?'':'none'}">
+                        <f:ajax process="@form" listener="#{util.closePriorityListener}"
+                                render="requirmentsform switchform staticsform"/>
+                        <div class="ripple-container"></div>
+                    </h:commandLink>
+
+                    <h:commandLink value="Close Bracket" styleClass="btn "
+                                   disabled="#{bean.priorityStack.peek().equals('return')?'false':'true'}"
+                                   style="display:#{bean.priorityStack.peek().equals('return')?'':'none'}">
+                        <f:ajax process="@form" listener="#{operationPanel.returnCollectionListener}"
+                                render="requirmentsform switchform staticsform"/>
+                        <div class="ripple-container"></div>
+                    </h:commandLink>
+
+                    <h:commandLink value="Close Bracket" styleClass="btn "
+                                   disabled="#{bean.priorityStack.peek().equals('newList')?'false':'true'}"
+                                   style="display:#{bean.priorityStack.peek().equals('newList')?'':'none'}">
+                        <f:ajax process="@form"
+                                listener="#{operationPanel.newListCollectionListener}"
+                                render="requirmentsform switchform staticsform"/>
+                        <div class="ripple-container"></div>
+                    </h:commandLink>
+
+                    <h:commandLink value="Close Bracket" styleClass="btn "
+                                   disabled="#{bean.priorityStack.peek().equals('close')?'false':'true'}"
+                                   style="display:#{bean.priorityStack.peek().equals('close')?'':'none'}">
+                        <f:ajax process="@form" listener="#{operationPanel.closeCollectionListener}"
+                                render="requirmentsform switchform staticsform"/>
+                        <div class="ripple-container"></div>
+                    </h:commandLink>
+
+                </div>
+            </h:panelGroup>
+        </div>
+    </div>
+</ui:composition>

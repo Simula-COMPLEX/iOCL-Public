@@ -1,0 +1,50 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <p:dialog
+            header="Class: #{selectionPanel.selectClassStructure.name} Instances"
+            widgetVar="instanceViewDialog" modal="true" showEffect="fade" closeOnEscape="true"
+            draggable="true" styleClass="panel"
+            hideEffect="fade" resizable="true">
+
+
+        <style>
+            .ui-accordion-header {
+
+            }
+        </style>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p:accordionPanel value="#{selectionPanel.selectClassStructure.instances}"
+                                  styleClass="panel panel-primary" var="instance">
+                    <p:tab title="Instance Name: #{instance.name}" titleStyleClass="panel-heading" closable="true">
+                        <h:dataTable style="max-width: 720px" var="attribute" reflow="true"
+                                     styleClass="table table-striped table-hover"
+                                     value="#{instance.attributes}"
+                                     rowKey="#{attribute.name}">
+
+                            <h:column headerText="Attribute Name">
+                                <f:facet name="header">Attribute Name</f:facet>
+                                <h:outputText value="#{attribute.name}"/>
+                            </h:column>
+                            <h:column headerText="Attribute Type">
+                                <f:facet name="header">Attribute Type</f:facet>
+                                <h:outputText value="#{attribute.type}"/>
+                            </h:column>
+                            <h:column headerText="Attribute Value">
+                                <f:facet name="header">Attribute Value</f:facet>
+                                <ui:repeat value="#{attribute.values}" var="value">
+                                    <h:outputText value="#{value}, "/>
+                                </ui:repeat>
+                            </h:column>
+                        </h:dataTable>
+                    </p:tab>
+                </p:accordionPanel>
+            </div>
+        </div>
+    </p:dialog>
+
+</ui:composition>

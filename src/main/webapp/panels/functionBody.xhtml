@@ -1,0 +1,15 @@
+<ui:composition
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:i="http://www.iocl.com/tags"
+        xmlns="http://www.w3.org/1999/xhtml">
+    <div class="panel panel-info">
+        <div class="panel-body" id="functionBody">
+
+            <i:panel disable="#{panel.disableClosePriorityPanel}" src="/panels/closePriorityOperationPanel.xhtml"/>
+
+            <i:panel disable="#{panel.disableAddPriorityPanel}" src="/panels/addPriorityOperationPanel.xhtml"/>
+
+            <ui:include src="/panels/ioclOperations.xhtml"/>
+        </div>
+    </div>
+</ui:composition>

@@ -1,0 +1,39 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="operationParameterPanel" class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Operation Signature Parameter Selection</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-lg-8">
+
+                    <p:selectOneMenu id="operationParameter" disabled="#{panel.disableOperationParameterPanel}"
+                                     value="#{property.operationSignatureParameter}" styleClass="form-control"
+                                     filter="true">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{property.allTypes}"/>
+                        <f:ajax process="@form"
+                                listener="#{signature.operationSignatureParameterListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form"
+                                listener="#{signature.backOperationSignatureParameterListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <div id="selfReferPanel" class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Contexts Change</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p:selectOneMenu id="refContext" value="#{property.refContext}"
+                                     disabled="#{bean.contextStack.size() == 0}"
+                                     filter="true">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{bean.contextStack}"/>
+                        <f:ajax process="@form" listener="#{bean.contextChangeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</ui:composition>

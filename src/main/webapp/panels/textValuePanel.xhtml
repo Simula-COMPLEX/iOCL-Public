@@ -1,0 +1,52 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="inputValuePanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Text Value Input</h3>
+        </div>
+        <div class="panel-body">
+            <h:outputLabel value="Comparison Type: #{property.propertyType}"/>
+            <br/>
+            <h:outputLabel value="Comparison Suggestion: #{property.suggestion}"/>
+            <br/>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            Auto Complete
+                            <p:autoComplete id="inputValueAutoComplete"
+                                            completeMethod="#{textValue.completeText}"
+                                            disabled="#{panel.disableTextValuePanel}" required="true">
+                                <p:ajax process="@form" listener="#{textValue.textValueSelect}"
+                                        event="itemSelect" update=":requirmentsform :switchform :staticsform"/>
+                            </p:autoComplete>
+                            Text Input
+                            <h:inputText id="inputValue" value="#{property.inputValue}"
+                                         disabled="#{panel.disableTextValuePanel}"
+                                         styleClass="form-control">
+                                <f:ajax process="@form" listener="#{textValue.textValueListener}"
+                                        event="valueChange" render="requirmentsform switchform staticsform"/>
+                            </h:inputText>
+
+                            <h:commandButton value="Go" styleClass="btn btn-raised btn-success"
+                                             style="margin-left:20px">
+                                <f:ajax process="@form" listener="#{textValue.textValueListener}"
+                                        render="requirmentsform switchform staticsform"/>
+                            </h:commandButton>
+                            <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                             style="margin-left:20px">
+                                <f:ajax process="@form"
+                                        listener="#{textValue.backTextValueListener}"
+                                        render="requirmentsform switchform staticsform"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ui:composition>

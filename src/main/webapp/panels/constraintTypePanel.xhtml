@@ -1,0 +1,43 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="constraintTypePanel" class="panel panel-default"
+         style="display: #{(panel.disableConstraintTypePanel=='true'?'none':'block')}">
+        <div class="panel-heading">
+            <h3 class="panel-title">Constraint Type</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <f:metadata>
+                    <f:event type="preRenderView" listener="#{property.setConstraintType('')}"/>
+                </f:metadata>
+
+                <div class="col-lg-8">
+                    <p:selectOneRadio id="constraintType" styleClass="radio-button"
+                                      value="#{property.constraintType}"
+                                      disabled="#{panel.disableConstraintTypePanel}">
+
+
+                        <f:selectItem itemLabel="INVARIANT" itemValue="inv"/>
+                        <f:selectItem itemLabel="PRE Condition" itemValue="pre"/>
+                        <f:selectItem itemLabel="POST Condition" itemValue="post"/>
+                        <f:selectItem itemLabel="Operation Body" itemValue="body"/>
+                        <f:selectItem itemLabel="Operation Definition" itemValue="def"/>
+                        <f:selectItem itemLabel="Query" itemValue="query"/>
+                        <f:ajax process="@form" listener="#{constraint.constraintTypeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneRadio>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger">
+                        <f:ajax process="@form"
+                                listener="#{constraint.backConstraintTypeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>

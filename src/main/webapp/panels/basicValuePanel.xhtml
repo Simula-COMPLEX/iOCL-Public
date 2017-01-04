@@ -1,0 +1,59 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml"
+>
+    <div id="ValuePanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Basic Value Input</h3>
+        </div>
+        <div class="panel-body">
+            <h:outputLabel value="Value Type: #{property.propertyType}"/>
+            <br/>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-inline">
+                        <div class="form-group">
+
+
+                            <h:panelGroup
+                                    rendered="#{property.propertyType=='Boolean' or property.propertyType=='EBooleanObject'}">
+                                <p:selectOneRadio id="valueBoolean" styleClass="radio-button"
+                                                  value="#{property.value}">
+                                    <f:selectItem itemLabel="True" itemValue="true"/>
+                                    <f:selectItem itemLabel="False" itemValue="false"/>
+                                    <f:ajax process="@form" listener="#{basicValuePanel.valueListener}"
+                                            render="requirmentsform switchform staticsform"/>
+                                </p:selectOneRadio>
+                            </h:panelGroup>
+
+                            <h:panelGroup
+                                    rendered="#{property.propertyType!='Boolean' and property.propertyType!='EBooleanObject'}">
+                                <h:inputText id="value" value="#{property.value}"
+                                             disabled="#{panel.disableValuePanel}" styleClass="form-control">
+                                    <f:ajax process="@form"
+                                            listener="#{basicValuePanel.valueListener}" event="valueChange"
+                                            render="requirmentsform switchform staticsform"/>
+                                </h:inputText>
+                                <h:commandButton value="Go" styleClass="btn btn-raised btn-success"
+                                                 style="margin-left:20px">
+                                    <f:ajax process="@form" listener="#{bean.valueListener}"
+                                            render="requirmentsform switchform staticsform"/>
+                                </h:commandButton>
+                            </h:panelGroup>
+
+                            <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                             style="margin-left:20px">
+                                <f:ajax process="@form"
+                                        listener="#{basicValuePanel.backValueListener}"
+                                        render="requirmentsform switchform staticsform"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ui:composition>

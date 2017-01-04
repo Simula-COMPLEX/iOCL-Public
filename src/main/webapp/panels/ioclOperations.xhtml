@@ -1,0 +1,58 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml"
+>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn-group btn-group-justified btn-group-raised">
+
+
+                <p:commandLink value="New" action="#{util.newConstraint}"
+                               styleClass="btn">
+                    <f:ajax process="@form"
+                            render="requirmentsform switchform staticsform"/>
+                    <p:confirm header="Confirmation" message="Are you sure?"
+                               icon="ui-icon-alert"/>
+                    <div class="ripple-container"></div>
+                </p:commandLink>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Yes" type="button"
+                                     styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                    <p:commandButton value="No" type="button"
+                                     styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+
+                </p:confirmDialog>
+                <h:commandLink value="Validate" action="#{util.validateConstraint}"
+                               styleClass="btn">
+                    <f:ajax process="@form"
+                            render="requirmentsform switchform staticsform"/>
+                    <div class="ripple-container"></div>
+                </h:commandLink>
+                <h:commandLink value="Evaluate" action="#{util.evaluateConstraint}"
+                               styleClass="btn">
+                    <f:ajax process="@form"
+                            render="requirmentsform switchform staticsform"/>
+                    <div class="ripple-container"></div>
+                </h:commandLink>
+                <h:commandLink value="ESOCL" action="#{util.esOCL}"
+                               styleClass="btn">
+                    <f:ajax process="@form"
+                            render="requirmentsform switchform staticsform"/>
+                    <div class="ripple-container"></div>
+                </h:commandLink>
+
+                <h:commandLink value="Download"
+                               styleClass="btn" action="#{util.exportConstraint()}">
+                    <div class="ripple-container"></div>
+                </h:commandLink>
+                <h:commandLink value="Get Model"
+                               styleClass="btn" action="#{util.exportModel()}">
+                    <div class="ripple-container"></div>
+                </h:commandLink>
+            </div>
+        </div>
+    </div>
+</ui:composition>

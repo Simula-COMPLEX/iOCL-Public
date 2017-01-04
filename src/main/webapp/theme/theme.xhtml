@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns="http://www.w3.org/1999/xhtml"
+>
+<h:head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta charset="UTF-8"/>
+    <meta name="author" content="Muhammad Hammad"/>
+    <title>Interactive OCL Writing Tool</title>
+
+    <h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
+    <h:outputStylesheet library="bootstrap-material" name="css/ripples.css"/>
+
+
+    <!--<h:outputStylesheet library="bootstrap" name="css/bootstrap-theme.css"/>-->
+    <!--<h:outputStylesheet library="bootstrap-material" name="css/bootstrap-material-design.css"/>-->
+
+    <h:outputStylesheet library="iocl" name="css/iocl-theme.css"/>
+
+    <!--<h:outputStylesheet library="bsf" name="css/bsf.css"/>-->
+    <h:outputStylesheet library="iocl" name="css/style.css"/>
+
+    <link rel="shortcut icon" type="image/x-icon"
+          href="#{resource['images/favicon.ico']}"/>
+</h:head>
+<h:body>
+
+
+    <ui:include src="/theme/nav.xhtml"/>
+    <ui:insert name="body"></ui:insert>
+    <ui:include src="/theme/footer.xhtml"/>
+
+    <!--<h:outputScript library="iocl" name="js/jquery-2.2.3.min.js"/>-->
+    <!--<h:outputScript library="iocl" name="js/sizzle.min.js"/>-->
+
+    <h:outputScript library="bootstrap" name="js/bootstrap.js"/>
+    <h:outputScript library="bootstrap-material" name="js/ripples.js"/>
+    <h:outputScript library="bootstrap-material" name="js/material.js"/>
+    <h:outputScript library="iocl" name="js/script.js"/>
+    <h:outputScript>$.material.init()</h:outputScript>
+
+    <!--<h:outputStylesheet library="contextMenu" name="css/jquery.contextMenu.css"/>
+    <h:outputScript library="contextMenu" name="js/jquery.contextMenu.js"/>
+    <h:outputScript library="contextMenu" name="js/jquery.ui.position.js"/>
+
+    <h:outputScript>
+        $('.ui-tree-container').contextMenu({
+            selector: "li.class-context-menu",
+            items: {
+                create: {
+                    name: "Create Intance", icon: "edit", callback: function (key, item) {
+                        console.log($(this));
+                        console.log($(this).context);
+                        console.log($(this).context.getAttribute("data-rowkey"));
+                        var rowkey = $(this).context.getAttribute("data-rowkey");
+                        console.log(rowkey.split("_").length);
+                        if (rowkey.split("_").length > 1) {
+                            alert("Child");
+                            return;
+                        }
+                        // alert(rowkey);
+                    }
+                }
+            }
+
+        });
+    </h:outputScript>-->
+</h:body>
+
+</html>

@@ -1,0 +1,148 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="/theme/theme.xhtml">
+    <ui:define name="nav">
+        <ul class="nav navbar-nav">
+            <li>
+                <h:link value="Home" outcome="index"/>
+            </li>
+            <li class="active">
+                <h:link value="Examples" outcome="example"/>
+            </li>
+            <li>
+                <h:link value="Config" outcome="config"/>
+            </li>
+            <li><a href="http://zen-tools.com" target="_blank">About Us</a></li>
+        </ul>
+    </ui:define>
+    <ui:define name="body">
+        <div class="container-fluid">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Examples</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="jumbotron doc">
+                                <h3 class="page-header">
+                                    Exmaples
+                                </h3>
+                                <h:form>
+                                    <p>We design some constraint RoyalAndLoyal case study using iOCL. For iOCL
+                                        Evaluation download
+                                        <h:commandLink id="RoyalAndLoyal" value="RoyalAndLoyal"
+                                                       action="#{docs.downloadModel}"/>
+                                        case study and try to specify constraint using IOCL
+                                    </p>
+                                </h:form>
+                                <br/>
+
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Context</th>
+                                        <th>Type</th>
+                                        <th>Operation</th>
+                                        <th colspan="4">Constraint</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Membership</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>((self.currentLevel.name = 'Silver' ) implies ( self.card.color =
+                                            RandLColor::silver ) and self.currentLevel.name = 'Gold' ) implies
+                                            self.card.color = RandLColor::gold
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Membership</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>self.programs.partners->forAll(p | p.deliveredServices->forAll(d |
+                                            d.pointsEarned = 0 )) implies self.account->isEmpty()
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>CustomerCard</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>self.transactions->select(t | t.points > 100 ) ->notEmpty() = true</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>ProgramPartner</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>self.programs->collect(pr | pr.participants ) ->asSet() ->size() =
+                                            self.numberOfCustomers
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>LoyaltyAccount</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>self.points > 0 implies self.transactions->exists(t | t.points > 0 )</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">6</th>
+                                        <td>Customer</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>self.memberships->collect(me | me.account ) ->reject(ac | ac.points &gt;= 0
+                                            ) ->isEmpty() = 1
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">7</th>
+                                        <td>Customer</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>( self.gender = Gender::male ) implies self.title = 'Mr'</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">8</th>
+                                        <td>TransactionReport</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>self.lines->collect(l | l.date ) ->forAll(da | da.isBefore( self.until ) =
+                                            true )
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">9</th>
+                                        <td>LoyaltyProgram</td>
+                                        <td>Invariant</td>
+                                        <td></td>
+                                        <td>self.memberships->collect(me | me.account ) ->isUnique(ac | ac.number )</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">10</th>
+                                        <td>LoyaltyProgram</td>
+                                        <td>Operation Body</td>
+                                        <td>getServices(pp : ProgramPartner ) : Set(Service)</td>
+                                        <td>self.partners->collect(pa | pa.deliveredServices ) ->asSet()</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h:outputScript library="iocl" name="js/jquery-2.2.3.min.js"/>
+
+    </ui:define>
+</ui:composition>

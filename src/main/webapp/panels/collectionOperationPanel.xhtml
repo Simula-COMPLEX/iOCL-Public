@@ -1,0 +1,47 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="propertyOperationPanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Collection Operation Selection</h3>
+        </div>
+        <div class="panel-body">
+            <f:metadata>
+                <f:event type="preRenderView" listener="#{property.setOperation('')}"/>
+            </f:metadata>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p:selectOneMenu filter="true" id="collectionOperation"
+                                     value="#{property.operation}"
+                                     disabled="#{panel.disableCollectionOperationPanel}">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{property.operations}"/>
+                        <f:ajax process="@form" listener="#{operationPanel.operationListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-2">
+                    <div class="checkbox">
+                        <label>
+                            <h:selectBooleanCheckbox disabled="#{panel.disableCollectionOperationPanel}"
+                                                     value="#{property.twoVariable}">
+                                <f:ajax process="@form" listener="#{bean.doNothing}" event="valueChange"
+                                        render="requirmentsform switchform staticsform"/>
+                            </h:selectBooleanCheckbox>
+                            <span class="checkbox-material"><span class="check"></span></span> two variable
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form" listener="#{operationPanel.backOperationListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>

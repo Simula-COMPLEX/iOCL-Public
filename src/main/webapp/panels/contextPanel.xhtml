@@ -1,0 +1,26 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="contextPanel" class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Context Selection</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-lg-9">
+                    <p:selectOneMenu id="context" value="#{property.context}"
+                                     disabled="#{panel.disableContextPanel}" filter="true">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{property.contexts}"/>
+                        <f:ajax process="@form" listener="#{contextPanel.contextListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ui:composition>

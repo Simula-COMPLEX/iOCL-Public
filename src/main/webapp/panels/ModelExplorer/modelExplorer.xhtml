@@ -1,0 +1,99 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <h:form id="treeform" prependId="false">
+        <ui:include src="/panels/ModelExplorer/dialog/createInstanceDialog.xhtml"/>
+        <ui:include src="/panels/ModelExplorer/dialog/classViewDialog.xhtml"/>
+        <ui:include src="/panels/ModelExplorer/dialog/instanceViewDialog.xhtml"/>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <h3 class="panel-title">
+                    Model Explorer Panel<a
+                        class="pull-right #{panel.collapseModelPanel=='true'?'collapsed':''}"
+                        role="button" data-toggle="collapse" href="#classtree"
+                        aria-expanded="false"/>
+                </h3>
+            </div>
+
+
+            <div class="panel-body #{panel.collapseModelPanel=='true'?'collapse':''}"
+                 id="classtree">
+                <div class="row">
+                    <div class="col-lg-12">
+
+
+                        <p:remoteCommand name="onRowClick" actionListener="#{selectionPanel.onNodeContext}"
+                                         update=":requirmentsform :treeform :switchform :staticsform"/>
+
+                        <p:contextMenu for="models">
+                            <p:menuitem value="Create Instance" update="models" icon="ui-icon-plus"
+                                        onclick="onRowClick()" oncomplete="PF('createInstanceDialog').show()"/>
+                            <p:menuitem value="View Class" update="models" icon="ui-icon-search"
+                                        onclick="onRowClick()" oncomplete="PF('classViewDialog').show()"/>
+                            <p:menuitem value="View Instances" update="models" icon="ui-icon-search"
+                                        onclick="onRowClick()" oncomplete="PF('instanceViewDialog').show()"/>
+                        </p:contextMenu>
+
+
+                        <p:tree id="models" value="#{modelExplorer.root}" var="doc" selectionMode="single"
+                                selection="#{selectionPanel.selectedNode}" styleClass="">
+
+                            <p:ajax event="select" update=":requirmentsform :treeform :switchform :staticsform"
+                                    listener="#{selectionPanel.onNodeSelect}"/>
+
+                            <!-- <p:ajax event="unselect" update=":requirmentsform :treeform"
+                                            listener="#{selectionPanel.onNodeUnselect}" /> -->
+
+                            <p:treeNode expandedIcon="ui-icon-folder-open"
+                                        collapsedIcon="ui-icon-folder-collapsed">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+                            <p:treeNode type="classTop" icon="ui-icon-class" styleClass="class-context-menu">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+                            <p:treeNode type="datatype" icon="ui-icon-datatype">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+                            <p:treeNode type="class" icon="ui-icon-class">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+                            <p:treeNode type="property" icon="ui-icon-property">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+                            <p:treeNode type="operation" icon="ui-icon-operation">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+                            <p:treeNode type="association" icon="ui-icon-association">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+                            <p:treeNode type="superclass" icon="ui-icon-superclass">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+                            <p:treeNode type="enumeration" icon="ui-icon-enumeration">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+                            <p:treeNode type="instance" icon="ui-icon-instance">
+                                <h:outputText value="#{doc.name}"/>
+                            </p:treeNode>
+
+
+                        </p:tree>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </h:form>
+</ui:composition>

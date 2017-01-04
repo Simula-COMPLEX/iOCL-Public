@@ -1,0 +1,82 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:i="http://www.iocl.com/tags"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div class="panel panel-default" id="queryPanel">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Constraint Panel<a class="pull-right" role="button"
+                                   data-toggle="collapse" href="#requirmentsformBody"
+                                   aria-expanded="false"/>
+            </h3>
+        </div>
+        <div class="panel-body" id="requirmentsformBody">
+            <h:form id="requirmentsform" prependId="false">
+
+
+                <p:growl id="growl" showDetail="true" sticky="true"/>
+
+                <i:panel disable="#{panel.disableInformationPanel}" src="/panels/informationPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableContextPanel}" src="/panels/contextPanel.xhtml"/>
+
+                <!--<i:panel2 disable="#{panel.disableContextPanel}"/>-->
+
+                <i:panel disable="#{panel.disableConstraintTypePanel}" src="/panels/constraintTypePanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableOperationNamePanel}" src="/panels/operationSignature.xhtml"/>
+
+                <i:panel disable="#{panel.disableOperationParameterPanel}"
+                         src="/panels/operationSignatureParameterPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableContextOperationPanel}" src="/panels/contextOperationPanel.xhtml"/>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <i:panel disable="#{panel.disableScopePanel}" src="/panels/scopePanel.xhtml"/>
+                    </div>
+                    <div class="col-lg-12">
+                        <i:panel disable="#{panel.disableScopePanel}" src="/panels/contextChange.xhtml"/>
+                    </div>
+                </div>
+
+
+                <i:panel disable="#{panel.disableClassOperationSelectPanel}" src="/panels/classOperationPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disablePropertyPanel}" src="/panels/propertySelectPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disablePredefinedOperationPanel}"
+                         src="/panels/predefinedOperationsPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disablePredefinedOperationParameterPanel}"
+                         src="/panels/predefinedOperationParameterPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableOperationTypePanel}" src="/panels/operationTypePanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableOperationPanel}" src="/panels/operationPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableCollectionOperationPanel}"
+                         src="/panels/collectionOperationPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableComparisonTypePanel}" src="/panels/comparisonTypePanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableTextValuePanel}" src="/panels/textValuePanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableValuePanel}" src="/panels/basicValuePanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableEnumPanel}" src="/panels/enumPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableEnumLiteralPanel}" src="/panels/enumLiteralPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableParameterPanel}" src="/panels/parameterSelectPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableConditionPanel}" src="/panels/conditionPanel.xhtml"/>
+
+                <i:panel disable="#{panel.disableInformationPanel}" src="/panels/functionBody.xhtml"/>
+
+
+            </h:form>
+        </div>
+    </div>
+</ui:composition>

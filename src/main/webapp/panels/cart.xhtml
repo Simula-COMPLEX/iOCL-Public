@@ -1,0 +1,126 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Visualize <a
+                    class="pull-right #{panel.collapseUpdatesPanel=='true'?'collapsed':''}"
+                    role="button" data-toggle="collapse" href="#visualize"
+                    aria-expanded="false"/>
+            </h3>
+        </div>
+        <div
+                class="panel-body #{panel.collapseUpdatesPanel=='true'?'collapse':''}"
+                id="visualize">
+
+            <div id="canvas"></div>
+            <style type="text/css">
+                .end-element {
+                    background-color: #FFCCFF;
+                }
+
+                svg {
+                    height: 407px !important;
+                    width: 787px !important;
+                }
+            </style>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <h:outputScript library="iocl" name="js/flowchart.js"/>
+
+            <script>
+                var chart;
+
+                function visualize() {
+
+
+                    if (chart) {
+                        chart.clean();
+                    }
+
+
+                    var code = '{"symbols":[{"key":"st","symbolType":"start","text":"Start","link":"http://www.google.com","target":"blank","flowstate":"past"},{"key":"e","symbolType":"end","text":"End","link":"http://www.google.com","target":null,"flowstate":null},{"key":"op1","symbolType":"operation","text":"My Operation","link":null,"target":null,"flowstate":"past"},{"key":"op2","symbolType":"operation","text":"Stuff","link":null,"target":null,"flowstate":"current"},{"key":"sub1","symbolType":"subroutine","text":"My Subroutine","link":null,"target":null,"flowstate":"invalid"},{"key":"cond","symbolType":"condition","text":"Yes or No?","link":"http://www.google.com","target":null,"flowstate":"approved"},{"key":"c2","symbolType":"condition","text":"Good idea","link":null,"target":null,"flowstate":"rejected"},{"key":"io","symbolType":"inputoutput","text":"catch something...","link":null,"target":null,"flowstate":"request"}],"directions":[{"key":"st","symbolType":"start","nextKey":"op1","nextSymbolType":"operation","next":"next","direction":null},{"key":"op1","symbolType":"operation","nextKey":"cond","nextSymbolType":"condition","next":"next","direction":"right"},{"key":"cond","symbolType":"condition","nextKey":"c2","nextSymbolType":"condition","next":"yes","direction":"right"},{"key":"cond","symbolType":"condition","nextKey":"sub1","nextSymbolType":"subroutine","next":"no","direction":null},{"key":"sub1","symbolType":"subroutine","nextKey":"op1","nextSymbolType":"operation","next":"next","direction":"left"},{"key":"c2","symbolType":"condition","nextKey":"io","nextSymbolType":"inputoutput","next":"yes","direction":null},{"key":"io","symbolType":"inputoutput","nextKey":"e","nextSymbolType":"end","next":"next","direction":null},{"key":"c2","symbolType":"condition","nextKey":"op2","nextSymbolType":"operation","next":"no","direction":null},{"key":"op2","symbolType":"operation","nextKey":"e","nextSymbolType":"end","next":"next","direction":null}]}';
+
+                    var data = JSON.parse(code);
+
+                    var symbols = data.symbols;
+                    var directions = data.directions;
+
+
+                    var symbolsArray = {};
+                    for (var key in symbols) {
+                        var symbol = symbols[key];
+                        symbolsArray[symbol.key] = symbol;
+                    }
+
+
+                    var directionsArray = {};
+
+                    for (var key in directions) {
+                        var direction = directions[key];
+                        directionsArray[direction.key + "_" + direction.nextKey + "_" + direction.next] = direction;
+                    }
+
+
+                    chart = flowchart.parseObject(symbolsArray, directionsArray);
+
+
+                    chart.drawSVG('canvas', {
+                        // 'x': 30,
+                        // 'y': 50,
+                        'line-width': 3,
+                        'line-length': 50,
+                        'text-margin': 10,
+                        'font-size': 14,
+                        'font': 'normal',
+                        'font-family': 'Helvetica',
+                        'font-weight': 'normal',
+                        'font-color': 'black',
+                        'line-color': 'black',
+                        'element-color': 'black',
+                        'fill': 'white',
+                        'yes-text': 'yes',
+                        'no-text': 'no',
+                        'arrow-end': 'block',
+                        'scale': 1,
+                        'symbols': {
+                            'start': {
+                                'font-color': 'red',
+                                'element-color': 'green',
+                                'fill': 'yellow'
+                            },
+                            'end': {
+                                'class': 'end-element'
+                            }
+                        },
+                        'flowstate': {
+                            'past': {'fill': '#CCCCCC', 'font-size': 12},
+                            'current': {'fill': 'yellow', 'font-color': 'red', 'font-weight': 'bold'},
+                            'future': {'fill': '#FFFF99'},
+                            'request': {'fill': 'blue'},
+                            'invalid': {'fill': '#444444'},
+                            'approved': {
+                                'fill': '#58C4A3',
+                                'font-size': 12,
+                                'yes-text': 'APPROVED',
+                                'no-text': 'n/a'
+                            },
+                            'rejected': {
+                                'fill': '#C45879',
+                                'font-size': 12,
+                                'yes-text': 'n/a',
+                                'no-text': 'REJECTED'
+                            }
+                        }
+                    });
+                }
+
+                visualize();
+            </script>
+
+
+        </div>
+    </div>
+
+</ui:composition>

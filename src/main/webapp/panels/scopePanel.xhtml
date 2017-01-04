@@ -1,0 +1,47 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="scopePanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Attribute Scope</h3>
+        </div>
+        <div class="panel-body">
+
+
+            <div class="row">
+                <div class="col-lg-8 ">
+                    <p:selectOneRadio id="scope" value="#{property.scope}" styleClass="radio-button"
+                                      disabled="#{panel.disableScopePanel}">
+                        <f:selectItem itemLabel="Local Attribute" itemValue="Attribute"/>
+                        <f:selectItem itemLabel="Navigation Attribute" itemValue="Navigation"/>
+                        <f:selectItem itemLabel="Local Operation" itemValue="Operation"/>
+                        <f:selectItem itemLabel="Predefined Operations"
+                                      itemValue="Predefined"/>
+
+                        <!--   <f:selectItem itemLabel="Compare "
+                                         itemValue="Compare"
+                                         itemDisabled="#{!property.getGlobalScpoe().equals('Navigation') and !property.getGlobalScpoe().equals('')}"/>-->
+                        <f:selectItem itemLabel="Compare "
+                                      itemValue="Compare"/>
+
+
+                        <f:ajax process="@form" listener="#{scopePanel.scopeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneRadio>
+
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form" listener="#{scopePanel.backScopeListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</ui:composition>

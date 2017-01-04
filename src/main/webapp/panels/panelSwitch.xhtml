@@ -1,0 +1,67 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml"
+>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <h3 class="panel-title">
+                Panel Switch <a
+                    class="pull-right #{panel.collapseModelPanel=='true'?'collapsed':''}"
+                    role="button" data-toggle="collapse" href="#panelSwitch"
+                    aria-expanded="false"/>
+            </h3>
+        </div>
+        <h:form id="switchform" prependId="false">
+            <div
+                    class="panel-body #{panel.collapseModelPanel=='true'?'collapse':''}"
+                    id="panelSwitch">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="btn-group-vertical" style="width: 100%">
+                            <h:commandButton value="Context Switch Panel"
+                                             styleClass="btn btn-raised #{(panel.disableContextPanel=='true'?'':'')}"
+                                             style="width:100%">
+                                <f:attribute name="data" value="context"/>
+                                <f:ajax process="@form" listener="#{bean.panelSwitch}"
+                                        render="requirmentsform switchform"/>
+                            </h:commandButton>
+                            <h:commandButton value="Attribute Scope Panel"
+                                             styleClass="btn btn-raised #{(panel.disableScopePanel=='true'?'':'btn-info')}"
+                                             style="width:100%">
+                                <f:attribute name="data" value="scope"/>
+                                <f:ajax process="@form" listener="#{bean.panelSwitch}"
+                                        render="requirmentsform switchform"/>
+                            </h:commandButton>
+                            <h:commandButton value="Operation Type Panel"
+                                             styleClass="btn btn-raised #{(panel.disableOperationTypePanel=='true'?'':'btn-info')}"
+                                             style="width:100%">
+                                <f:attribute name="data" value="operation"/>
+                                <f:ajax process="@form" listener="#{bean.panelSwitch}"
+                                        render="requirmentsform switchform"/>
+                            </h:commandButton>
+                            <h:commandButton value="Comparison Type Panel"
+                                             styleClass="btn btn-raised #{(panel.disableComparisonTypePanel=='true'?'':'btn-info')}"
+                                             style="width:100%">
+                                <f:attribute name="data" value="comparison"/>
+                                <f:ajax process="@form" listener="#{bean.panelSwitch}"
+                                        render="requirmentsform switchform"/>
+                            </h:commandButton>
+                            <h:commandButton value="Condition Panel"
+                                             styleClass="btn btn-raised #{(panel.disableConditionPanel=='true'?'':'btn-info')}"
+                                             style="width:100%">
+                                <f:attribute name="data" value="condition"/>
+                                <f:ajax process="@form" listener="#{bean.panelSwitch}"
+                                        render="requirmentsform switchform"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </div>
+
+
+</ui:composition>

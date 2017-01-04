@@ -1,0 +1,33 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="classOperationSelectPanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Local Operation Selection</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p:selectOneMenu filter="true" id="classOperation"
+                                     value="#{property.classOperation}"
+                                     disabled="#{panel.disableClassOperationSelectPanel}">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{property.classOperations}"/>
+                        <f:ajax process="@form" listener="#{classOperationPanel.classOperationsListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form"
+                                listener="#{classOperationPanel.backClassOperationsListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>

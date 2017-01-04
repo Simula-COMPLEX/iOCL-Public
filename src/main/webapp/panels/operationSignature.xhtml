@@ -1,0 +1,96 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns="http://www.w3.org/1999/xhtml"
+>
+    <div id="operationNamePanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Operation Signature</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-lg-4">
+
+                    <div class="form-group">
+                        <h:outputLabel value="Operation Name"/>
+                        <h:inputText id="operationName" value="#{property.operationSignatureName}"
+                                     disabled="#{panel.disableOperationNamePanel}"
+                                     styleClass="form-control">
+                            <f:ajax process="@form" listener="#{bean.doNothing}"
+                                    event="valueChange" render="requirmentsform switchform staticsform"/>
+                        </h:inputText>
+                    </div>
+
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <h:outputLabel value="No Of Parameters"/>
+                        <h:inputText id="OperationParameters" value="#{property.operationSignatureParameterCount}"
+                                     ph:type="number"
+                                     disabled="#{panel.disableOperationNamePanel}"
+                                     styleClass="form-control">
+                            <f:ajax process="@form" listener="#{bean.doNothing}"
+                                    event="valueChange" render="requirmentsform switchform staticsform"/>
+                        </h:inputText>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <h:outputLabel value="Return Type"/>
+                        <p:selectOneMenu id="returnType" value="#{property.operationSignatureReturnType}" filter="true"
+                                         disabled="#{panel.disableOperationNamePanel}"
+                                         styleClass="form-control">
+                            <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{property.allTypes}"/>
+                            <f:ajax process="@form" listener="#{bean.doNothing}"
+                                    event="valueChange" render="requirmentsform switchform staticsform"/>
+                        </p:selectOneMenu>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <h:outputLabel value="Collection Return Type"/>
+                        <div class="checkbox">
+                            <label>
+                                <h:selectBooleanCheckbox disabled="#{panel.disableOperationNamePanel}"
+                                                         value="#{property.operationSignatureSetReturnType}">
+                                    <f:ajax
+                                            process="@form" listener="#{bean.doNothing}"
+                                            event="valueChange"
+                                            render="requirmentsform switchform staticsform"/>
+                                </h:selectBooleanCheckbox>
+                                <span
+                                        class="checkbox-material"><span class="check"></span></span> Yes
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 center-block">
+
+
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form"
+                                listener="#{signature.backOperationSignatureListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+
+                    <h:commandButton value="Next" styleClass="btn btn-raised btn-success"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form" listener="#{signature.operationSignatureListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ui:composition>

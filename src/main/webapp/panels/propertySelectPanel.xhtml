@@ -1,0 +1,36 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <div id="propertySelectPanel" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Attribute Selection</h3>
+        </div>
+        <div class="panel-body">
+            <f:metadata>
+                <f:event type="preRenderView" listener="#{property.setProperty('')}"/>
+            </f:metadata>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p:selectOneMenu filter="true" id="property"
+                                     value="#{property.property}"
+                                     disabled="#{panel.disablePropertyPanel}">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{property.properties}"/>
+                        <f:ajax process="@form" listener="#{propertySelectPanel.propertyListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="col-lg-4">
+                    <h:commandButton value="Back" styleClass="btn btn-raised btn-danger"
+                                     style="margin-left:20px">
+                        <f:ajax process="@form"
+                                listener="#{propertySelectPanel.backPropertySelectListener}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>
