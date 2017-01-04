@@ -1,0 +1,15 @@
+*.class
+*.jar
+/targe
+/.DS_Store
+.idea/*
+*.iml
+*/*.iml
+/smaple
+.DS_Store
+*.DS_Store
+/build/
+/out/
+.project
+/classes/
+.idea/
