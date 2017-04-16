@@ -8,4 +8,8 @@
             no.simule.exception.IOCLExceptionHandlerFactory
         </exception-handler-factory>
     </factory>
+
+    <lifecycle>
+        <phase-listener id="nocache">no.simule.utils.CacheControlPhaseListener</phase-listener>
+    </lifecycle>
 </faces-config>

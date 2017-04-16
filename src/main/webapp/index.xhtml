@@ -20,10 +20,33 @@
         </ul>
     </ui:define>
 
+    <ui:define name="styles">
+        <style>
+            .CodeMirror {
+                border: 1px solid #eee;
+                height: 150px;
+            }
+
+        </style>
+
+        <h:outputStylesheet library="codemirror" name="codemirror.css"/>
+        <h:outputStylesheet library="codemirror" name="colors.css"/>
+        <h:outputStylesheet library="codemirror" name="show-hint.css"/>
+
+        <h:outputScript library="codemirror" name="codemirror.js"/>
+        <h:outputScript library="codemirror" name="ocl.js"/>
+        <h:outputScript library="codemirror" name="matchbrackets.js"/>
+        <h:outputScript library="codemirror" name="ocl-hint.js"/>
+        <h:outputScript library="codemirror" name="show-hint.js"/>
+        <h:outputScript library="codemirror" name="hardwrap.js"/>
+
+
+    </ui:define>
+
     <ui:define name="body">
 
 
-        <div class="loader"></div>
+        <div class="loader"/>
         <f:event type="preRenderView" listener="#{bean.preRenderView()}"/>
         <div class="container-fluid">
             <div class="panel panel-primary">
@@ -56,13 +79,85 @@
         </div>
 
 
+        <script type="application/javascript">
+            if (document.getElementById("informationTextArea") != null) {
+                editor = CodeMirror.fromTextArea(document.getElementById("informationTextArea"), {
+                    extraKeys: {"Ctrl-Space": "autocomplete"},
+                    lineNumbers: true,
+                    matchBrackets: true,
+                    mode: "text/x-ocl"
+
+                });
+
+                var wait, options = {column: 100}, changing = false;
+
+                editor.on("change", function (cm, change) {
+
+                    editor.save();
+                    var textArea = cm.getTextArea();
+                    textArea.value = cm.getValue();
+                    textArea.onchange();
+
+                    if (changing) return;
+                    clearTimeout(wait);
+                    wait = setTimeout(function () {
+                        changing = true;
+                        cm.wrapParagraphsInRange(change.from, CodeMirror.changeEnd(change), options);
+                        changing = false;
+                    }, 200);
+
+                });
+
+                /* var charWidth = editor.defaultCharWidth(), basePadding = 0;
+                 editor.on("renderLine", function(cm, line, elt) {
+                 var off = CodeMirror.countColumn(line.text, null, cm.getOption("tabSize")) * charWidth;
+                 elt.style.textIndent = "-" + off + "px";
+                 elt.style.paddingLeft = (basePadding + off) + "px";
+                 });
+                 editor.refresh();*/
+            }
+
+        </script>
+
         <h:outputScript>
             function ajaxStart() {
                 $("body").addClass("loading");
             }
 
             function ajaxComplete() {
+
+
+            if (document.getElementById("informationTextArea") != null) {
+            editor = CodeMirror.fromTextArea(document.getElementById("informationTextArea"), {
+            extraKeys: {"Ctrl-Space": "autocomplete"},
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-ocl"
+
+            });
+
+            var wait, options = {column: 100}, changing = false;
+
+            editor.on("change", function (cm, change) {
+
+            editor.save();
+            var textArea = cm.getTextArea();
+            textArea.value = cm.getValue();
+            textArea.onchange();
+
+            if (changing) return;
+            clearTimeout(wait);
+            wait = setTimeout(function() {
+            changing = true;
+            cm.wrapParagraphsInRange(change.from, CodeMirror.changeEnd(change), options);
+            changing = false;
+            }, 200);
+
+            });
+            }
+
                 $("body").removeClass("loading");
+
             }
 
             jsf.ajax.addOnEvent(function (data) {

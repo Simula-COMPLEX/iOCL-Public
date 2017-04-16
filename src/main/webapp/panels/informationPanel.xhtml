@@ -4,9 +4,24 @@
                 xmlns="http://www.w3.org/1999/xhtml"
 >
     <div class="panel panel-default" id="informationPanel"
-         style="display:
-										#{(panel.disableInformationPanel=='true'?'none':'block')}">
+         style="display:#{(panel.disableInformationPanel=='true'?'none':'block')}">
         <div class="panel-body">
+
+
+            <div class="row">
+                <div class="col-lg-12">
+
+
+                    <h:inputTextarea value="#{property.constraint}" rows="2" id="informationTextArea"
+                                     class="form-control" cols="80">
+                        <f:ajax process="@form" listener="#{bean.doNothing}"
+                                render="requirmentsform switchform staticsform"/>
+                    </h:inputTextarea>
+
+
+                </div>
+
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <b>Context : </b>
@@ -15,40 +30,11 @@
                     <b>Ref : </b>
                     <h:outputLabel value="#{property.ref}" style="color:blue"/>
 
-
                     <b>
                         <h:outputLabel value="#{bean.result}"/>
                     </b>
 
-                    <br/> <b>Constraint : </b>
-                    <h:outputLabel value="#{property.constraint}" style="color:green"/>
                 </div>
-            </div>
-            <br/>
-
-            <div class="row">
-                <div class="col-lg-12">
-
-
-                    <div class="input-group">
-                        <h:inputTextarea value="#{property.constraint}" rows="2"
-                                         class="form-control" cols="80">
-                            <f:ajax process="@form" listener="#{bean.doNothing}"
-                                    render="requirmentsform switchform staticsform"/>
-                        </h:inputTextarea>
-
-
-                        <span class="input-group-btn"> <h:commandButton
-                                value="Enter" styleClass="btn btn-raised btn-success"
-                                style="height: 100%;padding-top: 0px;padding-bottom: 0px;border-bottom: 0px;border-top: 0px;">
-								<f:ajax process="@form" listener="#{bean.doNothing}"
-                                        render="requirmentsform switchform staticsform"/>
-							</h:commandButton>
-						</span>
-
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
