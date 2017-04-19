@@ -31,6 +31,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The Class @ClassDiagramReader read UML Model ClassDiagram and Transform
+ * into {@link no.simule.dataobjects.cd.ClassDiagram} dataStructure.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
+
+
 public class ClassDiagramReader implements Serializable {
     private static final long serialVersionUID = 1L;
     private static ClassDiagram refModelDetail;
@@ -46,7 +56,16 @@ public class ClassDiagramReader implements Serializable {
         classInstanceMap = new HashMap<>();
     }
 
-    public ClassDiagram getRefModelDetails(Package _package) throws Exception {
+
+    /**
+     * This is the public method which take UML Package {@link org.eclipse.uml2.uml.Package} as input and read
+     * classes, instances , enumerations and relationships of Classes and return transformed dataStructure .
+     *
+     * @param _package of type {@link org.eclipse.uml2.uml.Package}.
+     * @return {@link no.simule.dataobjects.cd.ClassDiagram}.
+     */
+
+    public ClassDiagram readUMLPackage(Package _package) {
 
         if (_package != null) {
             EList<PackageableElement> packageableElements = _package.getPackagedElements();

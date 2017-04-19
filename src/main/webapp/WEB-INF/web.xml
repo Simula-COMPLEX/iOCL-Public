@@ -9,13 +9,13 @@
     </context-param>
     <listener>
         <listener-class>
-            no.simule.listener.Log4jListener
+            no.simule.utils.Log4jListener
         </listener-class>
     </listener>
 
 
     <context-param>
-        <param-name>facelets.LIBRARIES</param-name>
+        <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
         <param-value>/WEB-INF/iocl.taglib.xml</param-value>
     </context-param>
     <context-param>

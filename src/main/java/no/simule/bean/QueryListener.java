@@ -61,7 +61,7 @@ public class QueryListener implements Serializable {
 
     private transient InputStream model;
 
-    private int depthlevel = 1;
+    private int depthlevel = 3;
 
 
     private transient long startTime;
@@ -531,30 +531,34 @@ public class QueryListener implements Serializable {
     public void loadModel() {
         resetAll();
         try {
-            model = diagram.getInputStream();
+            if (model != null) {
+                model = diagram.getInputStream();
 
 
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = model.read(buffer)) > -1) {
-                baos.write(buffer, 0, len);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int len;
+                while ((len = model.read(buffer)) > -1) {
+                    baos.write(buffer, 0, len);
+                }
+                baos.flush();
+
+
+                model = new BufferedInputStream(new ByteArrayInputStream(
+                        baos.toByteArray()));
+
+
+                InputStream model2 = new BufferedInputStream(new ByteArrayInputStream(
+                        baos.toByteArray()));
+
+
+                load(model2, diagram != null ? diagram.getSubmittedFileName() : "");
+                // CodeGenration code = new CodeGenration();
+                // code.genrateClass(cd.getClasses());
+
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Model Not Selected", ""));
             }
-            baos.flush();
-
-
-            model = new BufferedInputStream(new ByteArrayInputStream(
-                    baos.toByteArray()));
-
-
-            InputStream model2 = new BufferedInputStream(new ByteArrayInputStream(
-                    baos.toByteArray()));
-
-
-            load(model2, diagram != null ? diagram.getSubmittedFileName() : "");
-            // CodeGenration code = new CodeGenration();
-            // code.genrateClass(cd.getClasses());
-
 
         } catch (Exception e) {
 
@@ -575,7 +579,7 @@ public class QueryListener implements Serializable {
 
 
                 Package _package = umlModel.loadModel(new ModelFile(stream));
-                cd = read.getRefModelDetails(_package);
+                cd = read.readUMLPackage(_package);
                 Collections.sort(cd.getClasses(), new Comparator<ClassStructure>() {
                     @Override
                     public int compare(ClassStructure o1, ClassStructure o2) {

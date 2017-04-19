@@ -1,7 +1,8 @@
-<ui:composition xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
-                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
                 xmlns="http://www.w3.org/1999/xhtml"
 >
     <div class="panel panel-default" id="inputformPanel">
@@ -17,6 +18,7 @@
         <div class="panel-body" id="inputformPanelBody">
 
             <h:form id="inputform" prependId="false" enctype="multipart/form-data">
+                <p:growl id="growl1" showDetail="true" sticky="true"/>
                 <!--  <f:metadata>
                       <f:event type="preRenderView" listener="#{bean.loadModelExperiment}"/>
                   </f:metadata>-->
@@ -24,22 +26,19 @@
                      style="display: #{(panel.disableInputPanel=='true'?'none':'inline')}">
 
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-sm-12">
 
 
                             <div class="form-inline">
 
-                                <h:outputLabel styleClass="control-label" value="UML Model"
-                                               style="padding-left: 10px;padding-right: 10px"/>
 
                                 <span class="btn btn-raised btn-file fileinput-button">
-                                    <i class="fa fa-upload"></i>
-                                    <span> Select Model </span>
+                                    <i class="fa fa-upload"/>
+                                    <span> Select UML Model </span>
                                     <h:inputFile id="file" styleClass=""
-                                                 label="Upload Model" value="#{bean.diagram}" required="true"
+                                                 label="Upload Model" value="#{bean.diagram}"
                                                  requiredMessage="File not selected !!"/>
                                 </span>
-
 
                                 <div class="form-group">
                                     <h:commandButton id="submit" styleClass="btn btn-raised btn-success"
@@ -58,30 +57,28 @@
                                                 event="valueChange" render="requirmentsform switchform staticsform"/>
                                     </h:inputText>
                                 </div>
-                                <div class="form-group">
-                                    <h:commandButton id="RoyalAndLoyal" styleClass="btn btn-raised btn-info"
-                                                     action="#{bean.royalModel()}" value="Royal And Loyal" type="submit"
-                                                     immediate="true">
-                                    </h:commandButton>
-                                </div>
 
-                                <div class="form-group">
-                                    <h:commandButton id="UML" styleClass="btn btn-raised btn-info"
-                                                     action="#{bean.umlModel()}" value="UML MetaModel" type="submit"
-                                                     immediate="true">
-                                    </h:commandButton>
-                                </div>
-                                <div class="form-group">
-                                    <h:commandButton id="reset" styleClass="btn btn-raised btn-danger"
-                                                     action="#{bean.resetAll()}" value="Reset" type="submit"
-                                                     immediate="true">
-                                    </h:commandButton>
+                            </div>
+                        </div>
+                        <div class="row">
 
-                                </div>
+                            <div class="col-sm-4">
+
+
+                                <h:commandButton id="RoyalAndLoyal" styleClass="btn btn-info btn-raised btn-block"
+                                                 action="#{bean.royalModel()}" value="Royal And Loyal"/>
+                            </div>
+                            <div class="col-sm-4">
+                                <h:commandButton id="UML" styleClass="btn  btn-info btn-raised btn-block"
+                                                 action="#{bean.umlModel()}" value="UML MetaModel"/>
+                            </div>
+                            <div class="col-sm-4">
+
+                                <h:commandButton id="reset" styleClass="btn btn-danger btn-raised btn-block"
+                                                 action="#{bean.resetAll()}" value="Reset"/>
 
 
                             </div>
-
                         </div>
                     </div>
                 </div>
