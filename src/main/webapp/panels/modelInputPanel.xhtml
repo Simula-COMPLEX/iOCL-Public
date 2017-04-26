@@ -19,9 +19,6 @@
 
             <h:form id="inputform" prependId="false" enctype="multipart/form-data">
                 <p:growl id="growl1" showDetail="true" sticky="true"/>
-                <!--  <f:metadata>
-                      <f:event type="preRenderView" listener="#{bean.loadModelExperiment}"/>
-                  </f:metadata>-->
                 <div id="inputPanel"
                      style="display: #{(panel.disableInputPanel=='true'?'none':'inline')}">
 
@@ -60,25 +57,26 @@
 
                             </div>
                         </div>
-                        <div class="row">
 
-                            <div class="col-sm-4">
+                    </div>
+                    <div class="row">
 
-
-                                <h:commandButton id="RoyalAndLoyal" styleClass="btn btn-info btn-raised btn-block"
-                                                 action="#{bean.royalModel()}" value="Royal And Loyal"/>
-                            </div>
-                            <div class="col-sm-4">
-                                <h:commandButton id="UML" styleClass="btn  btn-info btn-raised btn-block"
-                                                 action="#{bean.umlModel()}" value="UML MetaModel"/>
-                            </div>
-                            <div class="col-sm-4">
-
-                                <h:commandButton id="reset" styleClass="btn btn-danger btn-raised btn-block"
-                                                 action="#{bean.resetAll()}" value="Reset"/>
+                        <div class="col-sm-4">
 
 
-                            </div>
+                            <h:commandButton id="RoyalAndLoyal" styleClass="btn btn-info btn-raised btn-block"
+                                             action="#{bean.royalModel()}" value="Royal And Loyal"/>
+                        </div>
+                        <div class="col-sm-4">
+                            <h:commandButton id="UML" styleClass="btn  btn-info btn-raised btn-block"
+                                             action="#{bean.umlModel()}" value="UML MetaModel"/>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <h:commandButton id="reset" styleClass="btn btn-danger btn-raised btn-block"
+                                             action="#{bean.resetAll()}" value="Reset"/>
+
+
                         </div>
                     </div>
                 </div>

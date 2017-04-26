@@ -121,14 +121,18 @@
 
         <h:outputScript>
             function ajaxStart(source) {
-            if (source.id != "informationTextArea") {
+
+
+            if (source == null || source.id != "informationTextArea") {
             $("body").addClass("loading");
             }
+
+
             }
 
-            function ajaxCompletesource() {
+            function ajaxComplete(source) {
 
-            if (source.id != "informationTextArea") {
+            if (source == null || source.id != "informationTextArea") {
 
             if (document.getElementById("informationTextArea") != null) {
             editor = CodeMirror.fromTextArea(document.getElementById("informationTextArea"), {
@@ -162,6 +166,8 @@
 
             $("body").removeClass("loading");
             }
+
+
             }
 
             jsf.ajax.addOnEvent(function (data) {
@@ -183,7 +189,7 @@
                 }
             });
         </h:outputScript>
-        <p:ajaxStatus onstart=" ajaxStart()" oncomplete="ajaxComplete()"/>
+        <p:ajaxStatus onstart=" ajaxStart(null)" oncomplete="ajaxComplete()"/>
 
     </ui:define>
 </ui:composition>

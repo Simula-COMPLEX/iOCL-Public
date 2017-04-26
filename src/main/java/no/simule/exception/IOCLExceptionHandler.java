@@ -16,7 +16,7 @@
 
 package no.simule.exception;
 
-import no.simule.bean.QueryListener;
+import no.simule.actions.QueryListener;
 import org.apache.log4j.Logger;
 import org.primefaces.context.RequestContext;
 

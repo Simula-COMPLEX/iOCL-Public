@@ -15,7 +15,7 @@
 
 package no.simule.utils;
 
-import no.simule.dataobjects.cd.OperationParameter;
+import no.simule.models.cd.OperationParameter;
 
 import java.util.Iterator;
 import java.util.List;

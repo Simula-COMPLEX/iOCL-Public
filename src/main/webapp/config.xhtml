@@ -29,70 +29,70 @@
                 <f:event type="preRenderView" listener="#{transMap.preRenderView()}"/>
             </f:metadata>
 
-            <div class="container-fluid">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Configs</h3>
-                    </div>
-                    <div class="panel-body">
+            <!--   <div class="container-fluid">
+                   <div class="panel panel-primary">
+                       <div class="panel-heading">
+                           <h3 class="panel-title">Configs</h3>
+                       </div>
+                       <div class="panel-body">
 
-                        <div class="jumbotron doc">
+                           <div class="jumbotron doc">
 
-                            <div class="row">
-                                <div class="col-lg-12">
+                               <div class="row">
+                                   <div class="col-lg-12">
 
-                                    <div class="dataTable_wrapper">
+                                       <div class="dataTable_wrapper">
 
-                                        <p:dataTable value="#{config.configs}" var="conf"
-                                                     styleClass="table table-striped table-bordered table-hover"
-                                                     rows="10" paginator="true"
-                                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                                     rowsPerPageTemplate="10,25,50,100" reflow="true"
-                                                     id="config-data" editable="true">
+                                           <p:dataTable value="#{config.configs}" var="conf"
+                                                        styleClass="table table-striped table-bordered table-hover"
+                                                        rows="10" paginator="true"
+                                                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                        rowsPerPageTemplate="10,25,50,100" reflow="true"
+                                                        id="config-data" editable="true">
 
-                                            <f:facet name="header"> Configs Table</f:facet>
-                                            <p:ajax event="rowEdit" listener="#{config.onRowEdit}"
-                                                    update=":growl"/>
-                                            <p:ajax event="rowEditCancel"
-                                                    listener="#{config.onRowCancel}" update=":growl"/>
-
-
-                                            <p:column sortBy="#{conf.key}" colspan="1">
-                                                <f:facet name="header">name</f:facet>
-                                                #{conf.key}
-                                            </p:column>
+                                               <f:facet name="header"> Configs Table</f:facet>
+                                               <p:ajax event="rowEdit" listener="#{config.onRowEdit}"
+                                                       update=":growl"/>
+                                               <p:ajax event="rowEditCancel"
+                                                       listener="#{config.onRowCancel}" update=":growl"/>
 
 
-                                            <p:column headerText="Mapping" colspan="2"
-                                                      sortBy="#{conf.value}">
-                                                <p:cellEditor>
-                                                    <f:facet name="output">
-                                                        <h:outputText value="#{conf.value}"/>
-                                                    </f:facet>
-                                                    <f:facet name="input">
-                                                        <p:inputText value="#{conf.value}" styleClass="form-control"/>
-                                                    </f:facet>
-                                                </p:cellEditor>
-                                            </p:column>
-
-                                            <p:column colspan="1">
-                                                <p:rowEditor/>
-                                            </p:column>
-                                        </p:dataTable>
-
-                                    </div>
+                                               <p:column sortBy="#{conf.key}" colspan="1">
+                                                   <f:facet name="header">name</f:facet>
+                                                   #{conf.key}
+                                               </p:column>
 
 
-                                </div>
+                                               <p:column headerText="Mapping" colspan="2"
+                                                         sortBy="#{conf.value}">
+                                                   <p:cellEditor>
+                                                       <f:facet name="output">
+                                                           <h:outputText value="#{conf.value}"/>
+                                                       </f:facet>
+                                                       <f:facet name="input">
+                                                           <p:inputText value="#{conf.value}" styleClass="form-control"/>
+                                                       </f:facet>
+                                                   </p:cellEditor>
+                                               </p:column>
 
-                            </div>
+                                               <p:column colspan="1">
+                                                   <p:rowEditor/>
+                                               </p:column>
+                                           </p:dataTable>
+
+                                       </div>
 
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                   </div>
 
+                               </div>
+
+
+                           </div>
+                       </div>
+                   </div>
+               </div>
+            -->
 
             <div class="container-fluid">
                 <div class="panel panel-primary">
