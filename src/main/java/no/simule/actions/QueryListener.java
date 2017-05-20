@@ -40,7 +40,15 @@ import javax.servlet.http.Part;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * The Class QueryListener is a action class for contains multiple method for reading uml models, changing the states,
+ * and states variable which contain states of constraint and model information which need to determine next states.
+ * ocl constraint.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
 @ManagedBean(name = "bean", eager = true)
 @SessionScoped
 public class QueryListener extends ActionListener {

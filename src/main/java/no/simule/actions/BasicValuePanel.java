@@ -28,6 +28,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.util.List;
 
+/**
+ * The Class BasicValuePanel is a action class which handle text input from  value input panel and determine the next
+ * states of ocl constraint after and input value.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
 @ManagedBean(name = "basicValuePanel")
 @SessionScoped
 public class BasicValuePanel extends ActionListener {
@@ -48,6 +56,10 @@ public class BasicValuePanel extends ActionListener {
 
     }
 
+     /*
+     * Ajax Listener when back button press from value input panel
+     */
+
     public void backValueListener(AjaxBehaviorEvent event) {
         bean.selection();
         QueryListener queryListener = bean.beanFromStack();
@@ -57,6 +69,10 @@ public class BasicValuePanel extends ActionListener {
 
         }
     }
+
+    /*
+    * Ajax Listener when value input in text box
+    */
 
     public void valueListener(AjaxBehaviorEvent event) {
         bean.beanInStack();
@@ -76,6 +92,7 @@ public class BasicValuePanel extends ActionListener {
         property.setValue(Empty);
     }
 
+    /*logic supported method*/
 
     private void valueChange() {
         if (property.getPropertyType().equals(iOCLTypes.String)
@@ -124,7 +141,6 @@ public class BasicValuePanel extends ActionListener {
             panel.showConditionPanel();
         }
     }
-
 
     private void valueChangeStack() {
 

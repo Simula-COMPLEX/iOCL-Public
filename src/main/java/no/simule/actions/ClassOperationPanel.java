@@ -27,16 +27,18 @@ import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * The Class ClassOperationPanel is a action class which handle context Operation panel and determine next
+ * states after selection.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
 @ManagedBean(name = "classOperationPanel")
 @SessionScoped
-public class ClassOperationPanel implements Serializable {
-    private static final String Empty = "";
-    private static final String Space = " ";
-    private static final String Dot = ".";
-    private static final String Arrow = "->";
-    private static final String Comma = ",";
-    private static final String Apostrophe = "'";
-    private static final long serialVersionUID = 1L;
+public class ClassOperationPanel extends ActionListener {
+
     private QueryListener bean;
     private PanelBean panel;
     private PropertyBean property;
@@ -53,6 +55,9 @@ public class ClassOperationPanel implements Serializable {
                 context.getApplication().evaluateExpressionGet(context, "#{property}", PropertyBean.class);
     }
 
+    /*
+     * Ajax Listener when back button press from context operation input panel
+     */
 
     public void backClassOperationsListener(AjaxBehaviorEvent event) {
         bean.selection();
@@ -65,6 +70,9 @@ public class ClassOperationPanel implements Serializable {
         }
     }
 
+    /*
+    * Ajax Listener called when class opertion select from dropdownlist
+    */
     public void classOperationsListener(AjaxBehaviorEvent event) {
         // logger.debug("class Operations Listener");
         if (property.getClassOperation() == null || property.getClassOperation().isEmpty()) {

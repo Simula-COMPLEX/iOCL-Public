@@ -27,22 +27,17 @@ import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * The Class ComparisonTypePanel is a action class which handle context Value Type panel and determine next panel
+ * which need to provide the value for comparision.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
 @ManagedBean(name = "comparisonType")
 @SessionScoped
-public class ComparisonTypePanel implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private transient static final Logger logger = Logger.getLogger(ComparisonTypePanel.class);
-    private transient static final String Empty = "";
-    private transient static final String Space = " ";
-    private transient static final String Dot = ".";
-    private transient static final String Arrow = "->";
-    private transient static final String Comma = ",";
-    private transient static final String Apostrophe = "'";
-    private transient static final String Colon = ":";
-    private transient static final String LeftBracket = "(";
-    private transient static final String RightBracket = ")";
-    private transient static final String Bracket = "()";
-    private transient static final String Equal = "=";
+public class ComparisonTypePanel extends ActionListener {
     private QueryListener bean;
     private PanelBean panel;
     private PropertyBean property;

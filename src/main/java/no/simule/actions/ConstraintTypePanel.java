@@ -32,20 +32,8 @@ import java.util.ArrayList;
 
 @ManagedBean(name = "constraint")
 @SessionScoped
-public class ConstraintTypePanel implements Serializable {
-    private transient static final String Empty = "";
-    private transient static final String Space = " ";
-    private transient static final String Dot = ".";
-    private transient static final String Arrow = "->";
-    private transient static final String Comma = ",";
-    private transient static final String Apostrophe = "'";
-    private transient static final String Colon = ":";
-    private transient static final String LeftBracket = "(";
-    private transient static final String RightBracket = ")";
-    private transient static final String Bracket = "()";
-    private transient static final String Equal = "=";
+public class ConstraintTypePanel extends ActionListener {
 
-    private static final long serialVersionUID = 1L;
     private transient static final Logger logger = Logger.getLogger(ConstraintTypePanel.class);
     private QueryListener bean;
     private PanelBean panel;

@@ -1,0 +1,91 @@
+<ui:composition xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="/theme/theme.xhtml">
+    <ui:define name="nav">
+        <ul class="nav navbar-nav">
+            <li>
+                <h:link value="Home" outcome="index"/>
+            </li>
+            <li>
+                <h:link value="Examples" outcome="example"/>
+            </li>
+            <li>
+                <h:link value="Config" outcome="config"/>
+            </li>
+            <li class="active">
+                <h:link value="Docs" outcome="docs"/>
+            </li>
+            <li><a href="http://zen-tools.com" target="_blank">About Us</a></li>
+        </ul>
+    </ui:define>
+    <ui:define name="body">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Docs</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="jumbotron doc">
+                                <h:form>
+                                    <h1 class="page-header">
+                                        iOCL
+                                        <small>An Interactive OCL Writer
+
+                                            <h:commandLink action="#{docs.downloadFile}"
+                                                           styleClass="btn btn-primary btn-raised"
+                                                           value="Dowload User Manual"/>
+                                        </small>
+                                    </h1>
+
+                                    <p>iOCL is designed as a web-based tool application for specifying OCL constraints in
+                                        an interactive way. More specifically, iOCL takes an UML model as input to identify
+                                        domain knowledge (i.e., classes and attributes that OCL constraints can work on)
+                                        and produces a number of OCL constraints based on the domain expertise. Moreover,
+                                        iOCL includes in total 21 panels that are listed as below, which will be presented
+                                        in Section 2 of <h:commandLink action="#{docs.downloadFile}"
+                                                                       value="User Manual"/>
+                                        to show how to employ iOCL for specifying OCL constraints.
+                                    </p>
+                                    <br/>
+
+                                    <ol class="rounded-list">
+                                        <li><a href=""> Model Input</a></li>
+                                        <li><a href=""> Model Explorer</a></li>
+                                        <li><a href=""> Context Selection</a></li>
+                                        <li><a href=""> Constraint Type</a></li>
+                                        <li><a href=""> Context Operation</a></li>
+                                        <li><a href=""> Attribute Scope</a></li>
+                                        <li><a href=""> Attribute Selection</a></li>
+                                        <li><a href=""> Predefined Operations</a></li>
+                                        <li><a href=""> Operation Type Selection</a></li>
+                                        <li><a href=""> Collection Operation Selection</a></li>
+                                        <li><a href=""> Operation Selection</a></li>
+                                        <li><a href=""> Value Type</a></li>
+                                        <li><a href=""> Value Input</a></li>
+                                        <li><a href=""> Enumeration Selection</a></li>
+                                        <li><a href=""> Enumeration Literal Selection</a></li>
+                                        <li><a href=""> Parameter Selection</a></li>
+                                        <li><a href=""> Condition Type</a></li>
+                                        <li><a href=""> Priority Operation</a></li>
+                                        <li><a href=""> Constraint Panel</a></li>
+                                        <li><a href=""> Utility Functions</a></li>
+                                        <li><a href=""> Class Instance Panel</a></li>
+
+                                    </ol>
+
+                                </h:form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h:outputScript library="iocl" name="js/jquery-2.2.3.min.js"/>
+    </ui:define>
+</ui:composition>

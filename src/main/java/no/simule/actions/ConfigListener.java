@@ -30,11 +30,17 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * The Class ConfigListener is action class for config page used to add new domain specific translations.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
 @ManagedBean(name = "config")
 @SessionScoped
-public class ConfigListener implements Serializable {
+public class ConfigListener extends ActionListener {
     public transient static final Logger logger = Logger.getLogger(ConfigListener.class);
-    private static final long serialVersionUID = 1L;
     private List<Prop> configs = new ArrayList<>();
 
     public void preRenderView() {

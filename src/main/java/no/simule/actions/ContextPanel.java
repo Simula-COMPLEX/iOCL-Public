@@ -15,30 +15,22 @@
 
 package no.simule.actions;
 
-import org.apache.log4j.Logger;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
-import java.io.Serializable;
 
+/**
+ * The Class ContextPanel is a action class which handle context Panel when user select constraint this
+ * class set property and enable constraint type panel.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
 @ManagedBean(name = "contextPanel")
 @SessionScoped
-public class ContextPanel implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private transient static final Logger logger = Logger.getLogger(ContextPanel.class);
-    private transient static final String Empty = "";
-    private transient static final String Space = " ";
-    private transient static final String Dot = ".";
-    private transient static final String Arrow = "->";
-    private transient static final String Comma = ",";
-    private transient static final String Apostrophe = "'";
-    private transient static final String Colon = ":";
-    private transient static final String LeftBracket = "(";
-    private transient static final String RightBracket = ")";
-    private transient static final String Bracket = "()";
-    private transient static final String Equal = "=";
+public class ContextPanel extends ActionListener {
 
     @ManagedProperty(value = "#{bean}")
     private QueryListener bean;

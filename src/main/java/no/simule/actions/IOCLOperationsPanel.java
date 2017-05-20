@@ -15,11 +15,11 @@
 
 package no.simule.actions;
 
+import no.simule.exception.EsOCLException;
+import no.simule.exception.ValidationParseException;
 import no.simule.models.cd.ClassOperation;
 import no.simule.models.cd.ClassStructure;
 import no.simule.models.cd.OperationParameter;
-import no.simule.exception.EsOCLException;
-import no.simule.exception.ValidationParseException;
 import no.simule.utils.Keywords;
 import no.simule.utils.Mappings;
 import no.simule.utils.api.EsOCLEndPoint;
@@ -38,22 +38,18 @@ import javax.faces.event.AjaxBehaviorEvent;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The Class IOCLOperationsPanel is a action class for iOCL utility function contains method for evaluation
+ * and validation of constraint.
+ *
+ * @author Muhammad Hammad
+ * @version 1.0
+ * @since 2016-04-15
+ */
 @ManagedBean(name = "util")
 @SessionScoped
-public class IOCLOperationsPanel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class IOCLOperationsPanel extends ActionListener {
     private transient static final Logger logger = Logger.getLogger(IOCLOperationsPanel.class);
-    private transient static final String Empty = "";
-    private transient static final String Space = " ";
-    private transient static final String Dot = ".";
-    private transient static final String Arrow = "->";
-    private transient static final String Comma = ",";
-    private transient static final String Apostrophe = "'";
-    private transient static final String Colon = ":";
-    private transient static final String LeftBracket = "(";
-    private transient static final String RightBracket = ")";
-    private transient static final String Bracket = "()";
-    private transient static final String Equal = "=";
 
     @ManagedProperty(value = "#{bean}")
     private QueryListener bean;
@@ -67,13 +63,18 @@ public class IOCLOperationsPanel implements Serializable {
     private String name = "";
     private String email = "";
 
-
+    /**
+     * Method used to append left parenthesis to constraint
+     */
     public void addPriorityListener(AjaxBehaviorEvent event) {
         property.setConstraint(property.getConstraint() + " ( ");
         bean.getPriorityStack().push("parenthesis");
 
     }
 
+    /**
+     * Method used to append allInstances to constraint
+     */
     public void allInstances(AjaxBehaviorEvent event) {
         property.setConstraint(property.getConstraint() + property.getGlobalContext() + Dot + "allInstances()");
         bean.setOperationsMap(Mappings.getCollectionOperations());
@@ -88,6 +89,9 @@ public class IOCLOperationsPanel implements Serializable {
     }
 
 
+    /**
+     * Method used to append right parenthesis to constraint and hide button if no more parenthesis are open
+     */
     public void closePriorityListener(AjaxBehaviorEvent event) {
         property.setConstraint(property.getConstraint() + " ) ");
         if (!bean.getPriorityStack().empty()) {
@@ -99,13 +103,17 @@ public class IOCLOperationsPanel implements Serializable {
         bean.getPriorityStack().pop();
     }
 
-
+    /**
+     * Method used to append left parenthesis with not to constraint
+     */
     public void addNotPriorityListener(AjaxBehaviorEvent event) {
         property.setConstraint(property.getConstraint() + " not (");
         bean.getPriorityStack().push("parenthesis");
     }
 
-
+    /**
+     * Method used to append if to constraint and enable enif else and then operations buttons
+     */
     public void ifListener(AjaxBehaviorEvent event) {
         property.setConstraint(property.getConstraint() + "if" + Space);
         bean.getConditionStack().push("endif");
@@ -113,6 +121,11 @@ public class IOCLOperationsPanel implements Serializable {
         bean.getConditionStack().push("then");
     }
 
+
+    /**
+     * action enable parameter selection panel when user want to
+     * write constraint on parameter of opertions
+     */
 
     public void byParameterListener(AjaxBehaviorEvent event) {
         ClassOperation co = null;
@@ -131,6 +144,9 @@ public class IOCLOperationsPanel implements Serializable {
         panel.showParameterPanel();
     }
 
+    /**
+     * evolute constraint action evaluate constrain which all instance and display result in dialog
+     */
 
     public void evaluateConstraint() {
         FacesMessage message = null;
@@ -317,6 +333,8 @@ public class IOCLOperationsPanel implements Serializable {
         facesContext.responseComplete();
     }
 
+
+    /*getter and setters*/
 
     public String getEmail() {
         return email;
