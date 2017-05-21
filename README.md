@@ -11,6 +11,9 @@ reduce the time required to specify OCL constraints and decrease the possibility
 during the specification process. Thus, we conclude that iOCL can facilitate the process of OCL constraint 
 specification. Interested users can try iOCL at: http://iocl.zen-tools.com/.
 
+## Documentation
+1) [User Manual](https://github.com/Simula-TaoGroup/iOCL-Public/raw/master/iOCL%20User%20Manual.pdf)
+2) [Code Documentation](https://github.com/Simula-TaoGroup/iOCL-Public/raw/master/iOCL%20Code%20Documentation.pdf)
+
 ## License
-iOCL is released under version 3 of the [GNU General Public License][].
-[GNU General Public License]: http://www.gnu.org/licenses
+iOCL is released under version 3 of the [GNU General Public License](http://www.gnu.org/licenses).

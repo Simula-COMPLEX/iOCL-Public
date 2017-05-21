@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_917alqfREeWvLqCzCmWl7Q" name="CaseStudy">
+  <packageImport xmi:id="_917al6fREeWvLqCzCmWl7Q">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917amKfREeWvLqCzCmWl7Q" name="CancerPatientHistory">
+    <ownedAttribute xmi:id="_917amafREeWvLqCzCmWl7Q" name="PersonNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917amqfREeWvLqCzCmWl7Q" name="age" visibility="private" isDerived="true">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917am6fREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917anKfREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917anafREeWvLqCzCmWl7Q" name="birth" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917anqfREeWvLqCzCmWl7Q" name="gender" visibility="private" type="_917bgqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917an6fREeWvLqCzCmWl7Q" name="smoking" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917aoKfREeWvLqCzCmWl7Q" name="occupation" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917aoafREeWvLqCzCmWl7Q" name="message" visibility="private" type="_917a96fREeWvLqCzCmWl7Q" association="_917boafREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917aoqfREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917ao6fREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917apKfREeWvLqCzCmWl7Q" name="cancerCase" visibility="private" type="_917ap6fREeWvLqCzCmWl7Q" association="_917boqfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917apafREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917apqfREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917ap6fREeWvLqCzCmWl7Q" name="CancerCase">
+    <ownedRule xmi:id="_917aqKfREeWvLqCzCmWl7Q" name="basis" constrainedElement="_917ap6fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917aqafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.DS = 5 implies (self.basis =00 or  self.basis =10 or self.basis =20 or self.basis =29 or self.basis =30 or self.basis = 31 &#xD;&#xA;or self.basis =36 or self.basis =40 or self.basis =41 or self.basis =71 or self.basis =90 or self.basis =99) </body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917aqqfREeWvLqCzCmWl7Q" name="BasisMetastase" constrainedElement="_917ap6fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917aq6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.basis = 98 implies self.metastase = 9</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917arKfREeWvLqCzCmWl7Q" name="surgeryGender" constrainedElement="_917ap6fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917arafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.surgery = 17 or self.surgery = 18 or self.surgery = 19 or self.surgery = 28 or self.surgery = 29&#xD;&#xA;implies &#xD;&#xA;self.gender = GenderType::Female</body>
+      </specification>
+    </ownedRule>
+    <ownedAttribute xmi:id="_917arqfREeWvLqCzCmWl7Q" name="CancerCaseNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917ar6fREeWvLqCzCmWl7Q" name="unregistered" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917asKfREeWvLqCzCmWl7Q" name="missingClinicalMessage" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917asafREeWvLqCzCmWl7Q" name="missingHistCYT" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917asqfREeWvLqCzCmWl7Q" name="missingAutopsyRemiss" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917as6fREeWvLqCzCmWl7Q" name="multiplicity" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917atKfREeWvLqCzCmWl7Q" name="checked" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917atafREeWvLqCzCmWl7Q" name="involvedMsg" visibility="private" type="_917a96fREeWvLqCzCmWl7Q" association="_917boKfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917atqfREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917at6fREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917auKfREeWvLqCzCmWl7Q" name="age" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917auafREeWvLqCzCmWl7Q" name="gender" visibility="private" type="_917bgqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917auqfREeWvLqCzCmWl7Q" name="clinicalMessage" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917au6fREeWvLqCzCmWl7Q" name="clinicalMessageDNR" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917avKfREeWvLqCzCmWl7Q" name="extraLocation" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917avafREeWvLqCzCmWl7Q" name="municipalityNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917avqfREeWvLqCzCmWl7Q" name="districtNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917av6fREeWvLqCzCmWl7Q" name="changedDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917awKfREeWvLqCzCmWl7Q" name="patient" visibility="private" type="_917amKfREeWvLqCzCmWl7Q" association="_917boqfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917awafREeWvLqCzCmWl7Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917awqfREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917aw6fREeWvLqCzCmWl7Q" name="stadiumB" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917axKfREeWvLqCzCmWl7Q" name="ICD10_2" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917axafREeWvLqCzCmWl7Q" name="topograpyICD10" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917axqfREeWvLqCzCmWl7Q" name="encrDiagnosisDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917ax6fREeWvLqCzCmWl7Q" name="morfologyGrad" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917ayKfREeWvLqCzCmWl7Q" name="cin" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917ayafREeWvLqCzCmWl7Q" name="DS" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917ayqfREeWvLqCzCmWl7Q" name="diagnosisDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917ay6fREeWvLqCzCmWl7Q" name="LOK_ICD7" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917azKfREeWvLqCzCmWl7Q" name="topograph" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917azafREeWvLqCzCmWl7Q" name="histMotnac" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917azqfREeWvLqCzCmWl7Q" name="morfology" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917az6fREeWvLqCzCmWl7Q" name="basis" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a0KfREeWvLqCzCmWl7Q" name="metastase" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a0afREeWvLqCzCmWl7Q" name="stadium" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a0qfREeWvLqCzCmWl7Q" name="distribution" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a06fREeWvLqCzCmWl7Q" name="side" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a1KfREeWvLqCzCmWl7Q" name="laboratory" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a1afREeWvLqCzCmWl7Q" name="autopised" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a1qfREeWvLqCzCmWl7Q" name="automaticEntry" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a16fREeWvLqCzCmWl7Q" name="hospitalization" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a2KfREeWvLqCzCmWl7Q" name="morphPriority" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a2afREeWvLqCzCmWl7Q" name="histPriority" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a2qfREeWvLqCzCmWl7Q" name="registeredDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a26fREeWvLqCzCmWl7Q" name="recurrenceDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a3KfREeWvLqCzCmWl7Q" name="symptom" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a3afREeWvLqCzCmWl7Q" name="symptomDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a3qfREeWvLqCzCmWl7Q" name="symptomPhysicianDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a36fREeWvLqCzCmWl7Q" name="topographyICDO3" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a4KfREeWvLqCzCmWl7Q" name="morfologyICDO3" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a4afREeWvLqCzCmWl7Q" name="hereditaryDISP" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a4qfREeWvLqCzCmWl7Q" name="morfologyWHO" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a46fREeWvLqCzCmWl7Q" name="clinicalStadium" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a5KfREeWvLqCzCmWl7Q" name="sequence" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a5afREeWvLqCzCmWl7Q" name="surgery" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a5qfREeWvLqCzCmWl7Q" name="treatmentVersion" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a56fREeWvLqCzCmWl7Q" name="radiotherapy" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a6KfREeWvLqCzCmWl7Q" name="hormoneTherapy" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a6afREeWvLqCzCmWl7Q" name="chemoTherapy" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a6qfREeWvLqCzCmWl7Q" name="otherTreatment" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917a66fREeWvLqCzCmWl7Q" name="stageClassification" visibility="private" type="_917biKfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a7KfREeWvLqCzCmWl7Q" name="cN" visibility="private" type="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a7afREeWvLqCzCmWl7Q" name="cM" visibility="private" type="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a7qfREeWvLqCzCmWl7Q" name="pT" visibility="private" type="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a76fREeWvLqCzCmWl7Q" name="pN" visibility="private" type="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a8KfREeWvLqCzCmWl7Q" name="pM" visibility="private" type="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a8afREeWvLqCzCmWl7Q" name="cT" visibility="private" type="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a8qfREeWvLqCzCmWl7Q" name="ypT" visibility="private" type="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a86fREeWvLqCzCmWl7Q" name="ypN" visibility="private" type="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917a9KfREeWvLqCzCmWl7Q" name="ypM" visibility="private" type="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedOperation xmi:id="_917a9afREeWvLqCzCmWl7Q" name="Aggregate">
+      <ownedParameter xmi:id="_917a9qfREeWvLqCzCmWl7Q" name="msg" type="_917a96fREeWvLqCzCmWl7Q"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917a96fREeWvLqCzCmWl7Q" name="CancerMessage">
+    <ownedRule xmi:id="_917a-KfREeWvLqCzCmWl7Q" name="BasisSurgery1" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917a-afREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>(self.basis = 83 implies self.surgery = 99 ) and (self.surgery = 95 implies (self.basis = 57 or self.basis = 60&#xD;&#xA; or self.basis = 72 or self.basis = 79 or self.basis = 98))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917a-qfREeWvLqCzCmWl7Q" name="BasisSurgery2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917a-6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.basis = 57 implies (self.surgery = 14 or self.surgery  = 15&#xD;&#xA; or self.surgery  = 16 or self.surgery = 20  or self.surgery  = 95 or self.surgery = 97)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917a_KfREeWvLqCzCmWl7Q" name="MessagetypeBasis" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917a_afREeWvLqCzCmWl7Q" name="messagetypeBasis">
+        <language>OCL</language>
+        <body>self.messageType = &quot;O&quot; implies (self.basis = 57 or self.basis =60 or self.basis = 70 or self.basis = 74 or self.basis = 75 or self.basis = 76 or self.basis = 79 or self.basis = 98  )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917a_qfREeWvLqCzCmWl7Q" name="basisMessagetype" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917a_6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.basis = 90 implies self.messageType = 'D'</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bAKfREeWvLqCzCmWl7Q" name="messageTypeBasis2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bAafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.messageType = &quot;H&quot; implies ((self.basis >= 32 and self.basis &lt;= 39) or self.basis = 45 or self.basis =46 or self.basis = 47 or self.basis = 57 or &#xD;&#xA;self.basis = 60 or self.basis = 70 or self.basis = 74 or self.basis = 75  or self.basis = 76 or self.basis = 79 or self.basis = 98 )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bAqfREeWvLqCzCmWl7Q" name="basisMessagetype2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bA6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>(self.basis = 83 implies (self.messageType = &quot;K&quot; or self.messageType = &quot;R&quot;)) &#xD;&#xA;and ((self.basis >= 33 and self.basis &lt;=35) implies (self.messageType= &quot;K&quot; or self.messageType=&quot;R&quot; or self.messageType=&quot;H&quot;)) &#xD;&#xA;and (self.basis = 98 implies (self.messageType = &quot;H&quot; or self.messageType = &quot;O&quot;))&#xD;&#xA;and ((self.basis = 22 or self.basis=72) implies (self.messageType = &quot;K&quot; ))</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bBKfREeWvLqCzCmWl7Q" name="morfologyBasis">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bBafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>(self.morfology= 7200.39 or self.morfology= 7300.39 or self.morfology = 7300.19 or self.morfology = 7400.09 or self.morfology = 7405.09 or self.morfology = 7410.09)&#xD;&#xA; implies&#xD;&#xA; (self.basis = 57 or self.basis = 72 or self.basis = 98)&#xD;&#xA;</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bBqfREeWvLqCzCmWl7Q" name="SurgeryMessagetypeBasis" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bB6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>(self.surgery = 07 and self.messageType = &quot;H&quot;) implies (self.basis = 60 or self.basis = 98)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bCKfREeWvLqCzCmWl7Q" name="BasisMesstypeSurgery" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bCafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>((self.basis= 57 or self.basis= 60  or self.basis= 70  or self.basis= 74  or self.basis= 75  or self.basis= 76  or self.basis= 79)&#xD;&#xA;and self.MessageType = &quot;H&quot;) &#xD;&#xA;implies (self.surgery &lt;> 96 and self.surgery &lt;>99 )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bCqfREeWvLqCzCmWl7Q" name="BasisMessagetypeSurgery2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bC6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>(self.basis >= 32 and self.basis &lt;=39) and self.messageType = 'H' implies self.surgery = 96</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bDKfREeWvLqCzCmWl7Q" name="BasisMessagetypeSurgery3" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bDafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.surgery = 96 and self.messageType = 'H' implies (self.basis >= 32 and self.basis &lt;=39)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bDqfREeWvLqCzCmWl7Q" name="BasisMessagetypeSuregey4" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bD6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.basis = 79 and self.messageType &lt;>'O' implies (self.surgery = 95 or self.surgery = 97)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bEKfREeWvLqCzCmWl7Q" name="BasisMessagetypeSuregey5" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bEafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.basis = 60 implies (self.surgery = 07 or self.surgery = 12 or self.surgery = 15 or self.surgery = 18&#xD;&#xA;or self.surgery = 25 or self.surgery = 26 or self.surgery = 28 or self.surgery = 29 &#xD;&#xA;or self.surgery = 95 or self.surgery = 97)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bEqfREeWvLqCzCmWl7Q" name="BasisMessagetypeSuregey6" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bE6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.surgery = 07 and (self.messageType =&quot;O&quot; or self.messageType=&quot;R&quot;) &#xD;&#xA;implies &#xD;&#xA;(self.basis = 00 or self.basis = 10 or self.basis = 20 &#xD;&#xA;or (self.basis >= 29 and self.basis &lt;=31) or self.basis = 40 or self.basis = 72)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bFKfREeWvLqCzCmWl7Q" name="morfologyBasisMessagetype">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bFafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.morfology = 6999.99 and self.basis = 41 implies (self.messageType = &quot;K&quot; or self.messageType = &quot;R&quot; or self.messageType = &quot;D&quot;)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bFqfREeWvLqCzCmWl7Q" name="surgeryLokBasis" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bF6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.surgery = 01 and self.LOK_ICD7&lt;= 206.0 &#xD;&#xA;implies &#xD;&#xA;(self.basis = 31 or self.basis =70  or self.basis =71  or self.basis =72  or self.basis =74&#xD;&#xA; or self.basis =75  or self.basis =76  or self.basis =78)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bGKfREeWvLqCzCmWl7Q" name="surgeryLokBasis2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bGafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.surgery = 01 and self.LOK_ICD7&lt;= 206.0 &#xD;&#xA;implies &#xD;&#xA;(self.basis = 31 or self.basis =70  or self.basis =71  or self.basis =72  or self.basis =74&#xD;&#xA; or self.basis =75  or self.basis =76  or self.basis =78 or self.basis = 98)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bGqfREeWvLqCzCmWl7Q" name="messagetypeSurgery" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bG6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.messageType = &quot;D&quot; or self.messageType = &quot;O&quot; &#xD;&#xA;implies&#xD;&#xA;self.surgery = 99</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bHKfREeWvLqCzCmWl7Q" name="messagetypeSurgery2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bHafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.messageType = &quot;H&quot; &#xD;&#xA;implies&#xD;&#xA;(self.surgery = 01 or self.surgery = 02 or self.surgery = 07 or self.surgery =09 or self.surgery =25&#xD;&#xA; or self.surgery =26  or self.surgery =28 or self.surgery =29 or self.surgery =35&#xD;&#xA; or ( self.surgery >=10 and self.surgery &lt;= 21) or (self.surgery>=95 and self.surgery&lt;=99) )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bHqfREeWvLqCzCmWl7Q" name="surgeryMessagetype" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bH6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>(self.surgery = 35 or self.surgery = 07 or self.surgery = 09)&#xD;&#xA; implies &#xD;&#xA; (self.messageType = &quot;H&quot; or self.messageType = &quot;K&quot; or self.messageType = &quot;R&quot;)</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bIKfREeWvLqCzCmWl7Q" name="surgeryMessagetype2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bIafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>(self.surgery = 00)&#xD;&#xA; implies &#xD;&#xA; (self.messageType = &quot;K&quot; )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bIqfREeWvLqCzCmWl7Q" name="surgeryMessagetypeMetastase" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bI6fREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.surgery = 07 and self.messageType = &quot;H&quot; implies (self.metastase = &quot;0&quot; or self.metastase =&quot;1&quot; or self.metastase =&quot;A&quot; )</body>
+      </specification>
+    </ownedRule>
+    <ownedRule xmi:id="_917bJKfREeWvLqCzCmWl7Q" name="surgeryMessagetypeMetastase2" constrainedElement="_917a96fREeWvLqCzCmWl7Q">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_917bJafREeWvLqCzCmWl7Q">
+        <language>OCL</language>
+        <body>self.surgery = 07 and (self.messageType = &quot;K&quot; or self.messageType = &quot;R&quot; )&#xD;&#xA;implies &#xD;&#xA;(self.metastase = &quot;0&quot; or self.metastase =&quot;1&quot;or self.metastase =&quot;9&quot; or self.metastase =&quot;A&quot; )</body>
+      </specification>
+    </ownedRule>
+    <ownedAttribute xmi:id="_917bJqfREeWvLqCzCmWl7Q" name="MessageNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bJ6fREeWvLqCzCmWl7Q" name="cancerCaseNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bKKfREeWvLqCzCmWl7Q" name="personNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bKafREeWvLqCzCmWl7Q" name="messageType" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bKqfREeWvLqCzCmWl7Q" name="primaryTreatment" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bK6fREeWvLqCzCmWl7Q" name="treatmentHospital" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bLKfREeWvLqCzCmWl7Q" name="hospitalizedDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bLafREeWvLqCzCmWl7Q" name="preparationNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bLqfREeWvLqCzCmWl7Q" name="consultationPreparation" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bL6fREeWvLqCzCmWl7Q" name="convenedPreparation" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bMKfREeWvLqCzCmWl7Q" name="revisionofPreparation" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bMafREeWvLqCzCmWl7Q" name="supplementtaryAddress" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bMqfREeWvLqCzCmWl7Q" name="smoking" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bM6fREeWvLqCzCmWl7Q" name="extraCover" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bNKfREeWvLqCzCmWl7Q" name="filmNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bNafREeWvLqCzCmWl7Q" name="imageNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bNqfREeWvLqCzCmWl7Q" name="registeredUser" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bN6fREeWvLqCzCmWl7Q" name="cancerType" visibility="private" type="_917bn6fREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bOKfREeWvLqCzCmWl7Q" name="importType" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bOafREeWvLqCzCmWl7Q" name="importID" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bOqfREeWvLqCzCmWl7Q" name="occupation" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bO6fREeWvLqCzCmWl7Q" name="hereditary" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bPKfREeWvLqCzCmWl7Q" name="moreResposible" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bPafREeWvLqCzCmWl7Q" name="screeningFindings" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bPqfREeWvLqCzCmWl7Q" name="treatmentGoals" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bP6fREeWvLqCzCmWl7Q" name="tumorDiameter" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bQKfREeWvLqCzCmWl7Q" name="lymphNodeANT" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bQafREeWvLqCzCmWl7Q" name="lymphNodeAFF" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bQqfREeWvLqCzCmWl7Q" name="resectionBorder" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bQ6fREeWvLqCzCmWl7Q" name="infiltrationDepth" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bRKfREeWvLqCzCmWl7Q" name="mamEventNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bRafREeWvLqCzCmWl7Q" name="manLesionsNumber" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bRqfREeWvLqCzCmWl7Q" name="restTumor" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bR6fREeWvLqCzCmWl7Q" name="genetics" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bSKfREeWvLqCzCmWl7Q" name="lab_T" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bSafREeWvLqCzCmWl7Q" name="xrMldInfo" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bSqfREeWvLqCzCmWl7Q" name="egfr" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bS6fREeWvLqCzCmWl7Q" name="cancerCases" visibility="private" type="_917ap6fREeWvLqCzCmWl7Q" association="_917boKfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917bTKfREeWvLqCzCmWl7Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bTafREeWvLqCzCmWl7Q" value="1"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_917bTqfREeWvLqCzCmWl7Q" type="_917ap6fREeWvLqCzCmWl7Q" value="4"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bT6fREeWvLqCzCmWl7Q" name="patient" visibility="private" type="_917amKfREeWvLqCzCmWl7Q" association="_917boafREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917bUKfREeWvLqCzCmWl7Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bUafREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bUqfREeWvLqCzCmWl7Q" name="DS" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bU6fREeWvLqCzCmWl7Q" name="diagnosisDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bVKfREeWvLqCzCmWl7Q" name="LOK_ICD7" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bVafREeWvLqCzCmWl7Q" name="topograph" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bVqfREeWvLqCzCmWl7Q" name="histMotnac" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bV6fREeWvLqCzCmWl7Q" name="morfology" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bWKfREeWvLqCzCmWl7Q" name="basis" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bWafREeWvLqCzCmWl7Q" name="metastase" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bWqfREeWvLqCzCmWl7Q" name="stadium" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bW6fREeWvLqCzCmWl7Q" name="distribution" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bXKfREeWvLqCzCmWl7Q" name="side" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bXafREeWvLqCzCmWl7Q" name="laboratory" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bXqfREeWvLqCzCmWl7Q" name="autopised" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bX6fREeWvLqCzCmWl7Q" name="automaticEntry" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bYKfREeWvLqCzCmWl7Q" name="hospitalization" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bYafREeWvLqCzCmWl7Q" name="morphPriority" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bYqfREeWvLqCzCmWl7Q" name="histPriority" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bY6fREeWvLqCzCmWl7Q" name="registeredDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bZKfREeWvLqCzCmWl7Q" name="recurrenceDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bZafREeWvLqCzCmWl7Q" name="symptom" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bZqfREeWvLqCzCmWl7Q" name="symptomDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bZ6fREeWvLqCzCmWl7Q" name="symptomPhysicianDate" visibility="private" type="_917bfqfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917baKfREeWvLqCzCmWl7Q" name="topographyICDO3" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917baafREeWvLqCzCmWl7Q" name="morfologyICDO3" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917baqfREeWvLqCzCmWl7Q" name="hereditaryDISP" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917ba6fREeWvLqCzCmWl7Q" name="morfologyWHO" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bbKfREeWvLqCzCmWl7Q" name="clinicalStadium" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bbafREeWvLqCzCmWl7Q" name="sequence" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bbqfREeWvLqCzCmWl7Q" name="surgery" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bb6fREeWvLqCzCmWl7Q" name="treatmentVersion" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bcKfREeWvLqCzCmWl7Q" name="radiotherapy" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bcafREeWvLqCzCmWl7Q" name="hormoneTherapy" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bcqfREeWvLqCzCmWl7Q" name="chemoTherapy" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bc6fREeWvLqCzCmWl7Q" name="otherTreatment" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bdKfREeWvLqCzCmWl7Q" name="stageClassification" visibility="private" type="_917biKfREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bdafREeWvLqCzCmWl7Q" name="cN" visibility="private" type="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bdqfREeWvLqCzCmWl7Q" name="cM" visibility="private" type="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bd6fREeWvLqCzCmWl7Q" name="pT" visibility="private" type="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917beKfREeWvLqCzCmWl7Q" name="pN" visibility="private" type="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917beafREeWvLqCzCmWl7Q" name="pM" visibility="private" type="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917beqfREeWvLqCzCmWl7Q" name="cT" visibility="private" type="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917be6fREeWvLqCzCmWl7Q" name="ypT" visibility="private" type="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bfKfREeWvLqCzCmWl7Q" name="ypN" visibility="private" type="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedAttribute xmi:id="_917bfafREeWvLqCzCmWl7Q" name="ypM" visibility="private" type="_917bmafREeWvLqCzCmWl7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_917bfqfREeWvLqCzCmWl7Q" name="Date">
+    <ownedAttribute xmi:id="_917bf6fREeWvLqCzCmWl7Q" name="day" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bgKfREeWvLqCzCmWl7Q" name="month" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bgafREeWvLqCzCmWl7Q" name="year" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_917bgqfREeWvLqCzCmWl7Q" name="GenderType">
+    <ownedLiteral xmi:id="_917bg6fREeWvLqCzCmWl7Q" name="Female" classifier="_917bgqfREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bhKfREeWvLqCzCmWl7Q" name="Male" classifier="_917bgqfREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bhafREeWvLqCzCmWl7Q" name="Hermaphrodite" classifier="_917bgqfREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bhqfREeWvLqCzCmWl7Q" name="Transsexual" classifier="_917bgqfREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bh6fREeWvLqCzCmWl7Q" name="Unknown" classifier="_917bgqfREeWvLqCzCmWl7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_917biKfREeWvLqCzCmWl7Q" name="StageClassification"/>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_917biafREeWvLqCzCmWl7Q" name="TNMTType">
+    <ownedLiteral xmi:id="_917biqfREeWvLqCzCmWl7Q" name="TX" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bi6fREeWvLqCzCmWl7Q" name="T0" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bjKfREeWvLqCzCmWl7Q" name="T1a" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bjafREeWvLqCzCmWl7Q" name="T1b" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bjqfREeWvLqCzCmWl7Q" name="T1c" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bj6fREeWvLqCzCmWl7Q" name="T2a" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bkKfREeWvLqCzCmWl7Q" name="T2b" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bkafREeWvLqCzCmWl7Q" name="T2c" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bkqfREeWvLqCzCmWl7Q" name="T3a" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bk6fREeWvLqCzCmWl7Q" name="T3b" classifier="_917biafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917blKfREeWvLqCzCmWl7Q" name="T4" classifier="_917biafREeWvLqCzCmWl7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_917blafREeWvLqCzCmWl7Q" name="TNMNType">
+    <ownedLiteral xmi:id="_917blqfREeWvLqCzCmWl7Q" name="NX" classifier="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bl6fREeWvLqCzCmWl7Q" name="N0" classifier="_917blafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bmKfREeWvLqCzCmWl7Q" name="N1" classifier="_917blafREeWvLqCzCmWl7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_917bmafREeWvLqCzCmWl7Q" name="TNMMType">
+    <ownedLiteral xmi:id="_917bmqfREeWvLqCzCmWl7Q" name="MX" classifier="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bm6fREeWvLqCzCmWl7Q" name="M0" classifier="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bnKfREeWvLqCzCmWl7Q" name="M1a" classifier="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bnafREeWvLqCzCmWl7Q" name="M1b" classifier="_917bmafREeWvLqCzCmWl7Q"/>
+    <ownedLiteral xmi:id="_917bnqfREeWvLqCzCmWl7Q" name="M1c" classifier="_917bmafREeWvLqCzCmWl7Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_917bn6fREeWvLqCzCmWl7Q" name="CancerType"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_917boKfREeWvLqCzCmWl7Q" memberEnd="_917bS6fREeWvLqCzCmWl7Q _917atafREeWvLqCzCmWl7Q"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_917boafREeWvLqCzCmWl7Q" memberEnd="_917aoafREeWvLqCzCmWl7Q _917bT6fREeWvLqCzCmWl7Q"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_917boqfREeWvLqCzCmWl7Q" memberEnd="_917apKfREeWvLqCzCmWl7Q _917awKfREeWvLqCzCmWl7Q"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_917bo6fREeWvLqCzCmWl7Q" name="PrimitiveTypes">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_917bpKfREeWvLqCzCmWl7Q" name="Real"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917bpafREeWvLqCzCmWl7Q" name="message">
+    <ownedAttribute xmi:id="_917bpqfREeWvLqCzCmWl7Q" name="cancer Case_Diagnosis" visibility="private" type="_917bsqfREeWvLqCzCmWl7Q" association="_917bxqfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917bp6fREeWvLqCzCmWl7Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bqKfREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917bqafREeWvLqCzCmWl7Q" name="cancer Case_Treatment" visibility="private" type="_917bt6fREeWvLqCzCmWl7Q" association="_917bx6fREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917bqqfREeWvLqCzCmWl7Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bq6fREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917brKfREeWvLqCzCmWl7Q" name="cancer Case_Relapse" visibility="private" type="_917bvKfREeWvLqCzCmWl7Q" association="_917byKfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917brafREeWvLqCzCmWl7Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917brqfREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_917br6fREeWvLqCzCmWl7Q" name="cancer Case_Death" visibility="private" type="_917bwafREeWvLqCzCmWl7Q" association="_917byafREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917bsKfREeWvLqCzCmWl7Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bsafREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917bsqfREeWvLqCzCmWl7Q" name="Cancer Case_Diagnosis">
+    <ownedAttribute xmi:id="_917bs6fREeWvLqCzCmWl7Q" name="Specific field for diagnosis" visibility="private"/>
+    <ownedAttribute xmi:id="_917btKfREeWvLqCzCmWl7Q" name="message" visibility="private" type="_917bpafREeWvLqCzCmWl7Q" association="_917bxqfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917btafREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917btqfREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917bt6fREeWvLqCzCmWl7Q" name="Cancer Case_Treatment">
+    <ownedAttribute xmi:id="_917buKfREeWvLqCzCmWl7Q" name="attributeSpecific field for treatment" visibility="private"/>
+    <ownedAttribute xmi:id="_917buafREeWvLqCzCmWl7Q" name="message" visibility="private" type="_917bpafREeWvLqCzCmWl7Q" association="_917bx6fREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917buqfREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bu6fREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917bvKfREeWvLqCzCmWl7Q" name="Cancer Case_Relapse">
+    <ownedAttribute xmi:id="_917bvafREeWvLqCzCmWl7Q" name="Specific field for relapse" visibility="private"/>
+    <ownedAttribute xmi:id="_917bvqfREeWvLqCzCmWl7Q" name="message" visibility="private" type="_917bpafREeWvLqCzCmWl7Q" association="_917byKfREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917bv6fREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bwKfREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_917bwafREeWvLqCzCmWl7Q" name="Cancer Case_Death">
+    <ownedAttribute xmi:id="_917bwqfREeWvLqCzCmWl7Q" name="Specific field for death" visibility="private"/>
+    <ownedAttribute xmi:id="_917bw6fREeWvLqCzCmWl7Q" name="message" visibility="private" type="_917bpafREeWvLqCzCmWl7Q" association="_917byafREeWvLqCzCmWl7Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_917bxKfREeWvLqCzCmWl7Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_917bxafREeWvLqCzCmWl7Q" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_917bxqfREeWvLqCzCmWl7Q" memberEnd="_917bpqfREeWvLqCzCmWl7Q _917btKfREeWvLqCzCmWl7Q"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_917bx6fREeWvLqCzCmWl7Q" memberEnd="_917bqafREeWvLqCzCmWl7Q _917buafREeWvLqCzCmWl7Q"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_917byKfREeWvLqCzCmWl7Q" memberEnd="_917brKfREeWvLqCzCmWl7Q _917bvqfREeWvLqCzCmWl7Q"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_917byafREeWvLqCzCmWl7Q" memberEnd="_917br6fREeWvLqCzCmWl7Q _917bw6fREeWvLqCzCmWl7Q"/>
+  <profileApplication xmi:id="_917byqfREeWvLqCzCmWl7Q">
+    <eAnnotations xmi:id="_917by6fREeWvLqCzCmWl7Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Package>

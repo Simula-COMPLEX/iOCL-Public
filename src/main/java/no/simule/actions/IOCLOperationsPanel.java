@@ -334,7 +334,7 @@ public class IOCLOperationsPanel extends ActionListener {
     }
 
 
-    /*getter and setters*/
+    /* getter and setters */
 
     public String getEmail() {
         return email;

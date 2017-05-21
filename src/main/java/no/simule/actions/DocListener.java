@@ -21,12 +21,20 @@ public class DocListener implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public void downloadCodeFile() {
+        downloadFile("iOCL_Code_Documentation.pdf");
+    }
+
     public void downloadFile() {
+        downloadFile("iOCL_User_Manual.pdf");
+    }
+
+    public void downloadFile(String name) {
 
 
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
-        File file = new File(getClass().getClassLoader().getResource("iOCL_User_Manual.pdf").getFile());
+        File file = new File(getClass().getClassLoader().getResource(name).getFile());
         ec.responseReset();
         ec.setResponseContentType("application/pdf");
         ec.setResponseContentLength((int) file.length());
@@ -55,12 +63,20 @@ public class DocListener implements Serializable {
 
     }
 
+    public void downloadCaseStudy() {
+        downloadModel("CaseStudy.uml");
+    }
+
     public void downloadModel() {
+        downloadModel("RoyalAndLoyal.uml");
+    }
+
+    public void downloadModel(String name) {
 
 
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
-        File file = new File(getClass().getClassLoader().getResource("RoyalAndLoyal.uml").getFile());
+        File file = new File(getClass().getClassLoader().getResource(name).getFile());
         ec.responseReset();
         ec.setResponseContentType("application/download");
         ec.setResponseContentLength((int) file.length());
