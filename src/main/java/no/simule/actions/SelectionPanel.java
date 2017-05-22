@@ -31,21 +31,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "selectionPanel")
 @SessionScoped
-public class SelectionPanel implements Serializable {
-    public static final String Empty = "";
-    public static final String Space = " ";
-    public static final String Dot = ".";
-    public static final String Arrow = "->";
-    public static final String Comma = ",";
-    public static final String Apostrophe = "'";
+public class SelectionPanel extends ActionListener {
     private transient static final Logger logger = Logger.getLogger(SelectionPanel.class);
-    private static final long serialVersionUID = 1L;
 
     @ManagedProperty(value = "#{bean}")
     private QueryListener bean;
@@ -64,27 +56,42 @@ public class SelectionPanel implements Serializable {
     private ModelExplorerPanel modelExplorer;
 
 
-    private transient TreeNode selectedNode;
     private transient ClassStructure selectClassStructure;
-
 
     private transient ClassStructure classInstance;
     private transient String instanceName;
 
 
-    public void onNodeContext() {
-        logger.info("onNodeContext");
-        logger.info(selectedNode);
+    public void onNodeContextViewClass() {
 
-        if (selectedNode != null) {
-            selectClassStructure = bean.classObject(selectedNode.toString());
+        onNodeContext("ViewClass");
+    }
+
+    public void onNodeContextViewInstances() {
+
+        onNodeContext("ViewInstances");
+    }
+
+
+    public void onNodeContextCreateInstance() {
+
+        onNodeContext("CreateInstance");
+    }
+
+    private void onNodeContext(String type) {
+        logger.info("onNodeContext");
+        logger.info(modelExplorer.getSelectedNode());
+
+        if (modelExplorer.getSelectedNode() != null) {
+            selectClassStructure = bean.classObject(modelExplorer.getSelectedNode().toString());
 
             if (selectClassStructure == null) {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
-                        selectedNode + " is not a Class");
+                        modelExplorer.getSelectedNode() + " is not a Class");
                 FacesContext.getCurrentInstance().addMessage(null, message);
-
+                return;
             }
+
 
             instanceName = "";
             try {
@@ -98,6 +105,28 @@ public class SelectionPanel implements Serializable {
                 logger.error(e.getMessage(), e);
             }
 
+
+            switch (type) {
+                case "CreateInstance": {
+                    RequestContext.getCurrentInstance().execute("PF('createInstanceDialog').show();");
+                    break;
+                }
+                case "ViewClass": {
+                    RequestContext.getCurrentInstance().execute("PF('classViewDialog').show();");
+                    break;
+                }
+
+                case "ViewInstances": {
+                    RequestContext.getCurrentInstance().execute("PF('instanceViewDialog').show();");
+                    break;
+                }
+            }
+
+        } else {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
+                    "Class name is not selected");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            RequestContext.getCurrentInstance().showMessageInDialog(message);
         }
 
 
@@ -213,13 +242,13 @@ public class SelectionPanel implements Serializable {
             onNodeAttributeSelect(event.getTreeNode().toString());
         } else if (panel.getActivePanel() == PanelBean.classOperationSelectPanel) {
             onNodeOperationSelect(event.getTreeNode().toString());
-        } else {
+        }/* else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning",
                     "You can't Select context, property or operation at this moment");
             FacesContext.getCurrentInstance().addMessage(null, message);
             RequestContext.getCurrentInstance().showMessageInDialog(message);
         }
-
+*/
 
     }
 
@@ -286,14 +315,6 @@ public class SelectionPanel implements Serializable {
         }
     }
 
-
-    public TreeNode getSelectedNode() {
-        return selectedNode;
-    }
-
-    public void setSelectedNode(TreeNode selectedNode) {
-        this.selectedNode = selectedNode;
-    }
 
     public ClassStructure getSelectClassStructure() {
         return selectClassStructure;

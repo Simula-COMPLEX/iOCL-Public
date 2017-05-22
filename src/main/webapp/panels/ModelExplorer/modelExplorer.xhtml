@@ -12,10 +12,9 @@
             <div class="panel-heading">
 
                 <h3 class="panel-title">
-                    Model Explorer Panel<a
-                        class="pull-right #{panel.collapseModelPanel=='true'?'collapsed':''}"
-                        role="button" data-toggle="collapse" href="#classtree"
-                        aria-expanded="false"/>
+                    Model Explorer Panel<a class="pull-right #{panel.collapseModelPanel=='true'?'collapsed':''}"
+                                           role="button" data-toggle="collapse" href="#classtree"
+                                           aria-expanded="false"/>
                 </h3>
             </div>
 
@@ -26,21 +25,31 @@
                     <div class="col-lg-12">
 
 
-                        <p:remoteCommand name="onRowClick" actionListener="#{selectionPanel.onNodeContext}"
-                                         update=":requirmentsform :treeform :switchform :staticsform"/>
+                        <!--  <p:remoteCommand name="onRowClick" actionListener="#{selectionPanel.onNodeContext}"
+                                           update=":requirmentsform :treeform :switchform :staticsform"/>-->
 
                         <p:contextMenu for="models">
-                            <p:menuitem value="Create Instance" update="models" icon="ui-icon-plus"
-                                        onclick="onRowClick()" oncomplete="PF('createInstanceDialog').show()"/>
-                            <p:menuitem value="View Class" update="models" icon="ui-icon-search"
-                                        onclick="onRowClick()" oncomplete="PF('classViewDialog').show()"/>
-                            <p:menuitem value="View Instances" update="models" icon="ui-icon-search"
-                                        onclick="onRowClick()" oncomplete="PF('instanceViewDialog').show()"/>
+                            <p:menuitem value="Create Instance"
+                                        update=":requirmentsform :treeform :switchform :staticsform"
+                                        oncomplete="PF('createInstanceDialog').show()"
+                                        icon="ui-icon-plus"
+                                        actionListener="#{selectionPanel.onNodeContextCreateInstance}"/>
+
+                            <p:menuitem value="View Class" update=":requirmentsform :treeform :switchform :staticsform"
+                                        oncomplete="PF('classViewDialog').show()"
+                                        icon="ui-icon-search"
+                                        actionListener="#{selectionPanel.onNodeContextViewClass}"/>
+
+
+                            <p:menuitem value="View Instances"
+                                        update=":requirmentsform :treeform :switchform :staticsform"
+                                        oncomplete="PF('instanceViewDialog').show()" icon="ui-icon-search"
+                                        actionListener="#{selectionPanel.onNodeContextViewInstances}"/>
                         </p:contextMenu>
 
 
                         <p:tree id="models" value="#{modelExplorer.root}" var="doc" selectionMode="single"
-                                selection="#{selectionPanel.selectedNode}" styleClass="">
+                                selection="#{modelExplorer.selectedNode}">
 
                             <p:ajax event="select" update=":requirmentsform :treeform :switchform :staticsform"
                                     listener="#{selectionPanel.onNodeSelect}"/>

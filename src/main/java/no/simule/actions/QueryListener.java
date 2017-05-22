@@ -20,8 +20,8 @@ package no.simule.actions;
 import no.simule.models.ModelFile;
 import no.simule.models.cd.*;
 import no.simule.models.enm.EnumStructure;
-import no.simule.reader.ModelLoader;
 import no.simule.reader.ClassDiagramReader;
+import no.simule.reader.ModelLoader;
 import no.simule.utils.Mappings;
 import no.simule.utils.iOCLTypes;
 import org.apache.commons.io.FilenameUtils;
@@ -207,10 +207,12 @@ public class QueryListener extends ActionListener {
 
 
     ClassStructure classObject(String className) {
-        for (ClassStructure cs : cd.getClasses()) {
+        if (cd != null) {
+            for (ClassStructure cs : cd.getClasses()) {
 
-            if (cs.getName().equalsIgnoreCase(className)) {
-                return cs;
+                if (cs.getName().equalsIgnoreCase(className)) {
+                    return cs;
+                }
             }
         }
         return null;
@@ -218,10 +220,12 @@ public class QueryListener extends ActionListener {
 
 
     EnumStructure enumObject(String className) {
-        for (EnumStructure es : cd.getEnumerations()) {
+        if (cd != null) {
+            for (EnumStructure es : cd.getEnumerations()) {
 
-            if (es.getName().equalsIgnoreCase(className)) {
-                return es;
+                if (es.getName().equalsIgnoreCase(className)) {
+                    return es;
+                }
             }
         }
         return null;
@@ -431,12 +435,12 @@ public class QueryListener extends ActionListener {
         umlModel = new ModelLoader();
         setCd(null);
         modelExplorer.setRoot(null);
+        modelExplorer.setSelectedNode(null);
         reset();
         panel.resetAll();
         statics.reset();
         property.setContexts(new ArrayList<>());
     }
-
 
 
     public void royalModel() {

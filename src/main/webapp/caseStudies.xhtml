@@ -8,14 +8,15 @@
                 <h:link value="Home" outcome="index"/>
             </li>
             <li class="active">
-                <h:link value="Case Study" outcome="example"/>
+                <h:link value="Case Studies" outcome="caseStudies"/>
+            </li>
+            <li>
+                <h:link value="Documentation" outcome="docs"/>
             </li>
             <li>
                 <h:link value="Config" outcome="config"/>
             </li>
-            <li>
-                <h:link value="User Manual" outcome="docs"/>
-            </li>
+
             <li><a href="http://zen-tools.com" target="_blank">About Us</a></li>
         </ul>
     </ui:define>
@@ -24,122 +25,9 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Case Study</h3>
+                    <h3 class="panel-title">Case Studies</h3>
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
 
-                            <div class="jumbotron doc">
-                                <h3 class="page-header">
-                                    Real World Case Study
-                                </h3>
-                                <h:form>
-                                    <p>We design some constraint for real world Cancer Registry case study using iOCL. For iOCL
-                                        Evaluation download
-                                        <h:commandLink value="Case Study"
-                                                       action="#{docs.downloadCaseStudy}"/>
-                                        and try to specify constraint using IOCL
-                                    </p>
-                                </h:form>
-                                <br/>
-
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Context</th>
-                                        <th>Type</th>
-                                        <th colspan="4">Constraint</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>CancerMessage</td>
-                                        <td>Invariant</td>
-                                        <td>(self.morfology = '720039' or self.morfology = '730039') implies self.basis = 98
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>CancerMessage</td>
-                                        <td>Invariant</td>
-
-                                        <td>self.topograph = '420' implies (self.basis = 33 or self.basis = 38 or self.basis = 45 or self.basis = 47)
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>CancerMessage</td>
-                                        <td>Invariant</td>
-
-                                        <td>(self.surgery = 35 or self.surgery = 7 or self.surgery = 9)
-                                            implies (self.messageType = 'H' or self.messageType = 'K' or self.messageType = 'R')
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>CancerMessage</td>
-                                        <td>Invariant</td>
-
-                                        <td>(self.surgery = 7 and self.messageType = 'H') implies (self.basis = 60 or self.basis = 98)
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>CancerMessage</td>
-                                        <td>Invariant</td>
-
-                                        <td>( (self.basis=45 or self.basis = 46 or self.basis = 47) implies self.surgery = 99 ) and (self.basis = 2 implies self.surgery &lt;&gt; 10)</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>CancerCase</td>
-                                        <td>Invariant</td>
-
-                                        <td>(self.morfology = '7400.09' or self.morfology = '7405.09' or self.morfology = '7410.09')
-                                            implies
-                                            (self.surgery = 1 or self.surgery = 2 or self.surgery = 7 or self.surgery = 10)
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">7</th>
-                                        <td>CancerCase</td>
-                                        <td>Invariant</td>
-
-                                        <td>self.basis = 33 implies (self.topograph = '42.0' or self.topograph = '421')</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">8</th>
-                                        <td>CancerCase</td>
-                                        <td>Invariant</td>
-
-                                        <td>self.surgery = 17 or self.surgery = 18 or self.surgery = 29
-                                            implies
-                                            self.gender = GenderType::Female
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">9</th>
-                                        <td>CancerCase</td>
-                                        <td>Invariant</td>
-
-                                        <td>(self.topograph = 'C70' or self.topograph = 'C71' or self.topograph = 'C72') implies self.surgery &lt;&gt;1</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">10</th>
-                                        <td>CancerCase</td>
-                                        <td>Invariant</td>
-                                        <td>self.surgery = 14 implies (self.topograph = '619' or self.topograph = '67X' or self.topograph = '73X')</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
@@ -149,11 +37,11 @@
                                     Royal And Loyal
                                 </h3>
                                 <h:form>
-                                    <p>We design some constraint RoyalAndLoyal case study using iOCL. For iOCL
-                                        Evaluation download
-                                        <h:commandLink id="RoyalAndLoyal" value="RoyalAndLoyal"
-                                                       action="#{docs.downloadModel}"/>
-                                        case study and try to specify constraint using IOCL
+                                    <p>
+                                        We design in total 10 constraints for the RoyalAndLoyal case study with the aim at illustrating how to use iOCL. Please download
+                                        <h:commandLink value="RoyalAndLoyal"
+                                                       action="#{docs.downloadModel}"/> case study and try to specify constraints (shown as below) using iOCL.
+
                                     </p>
                                 </h:form>
                                 <br/>
@@ -249,6 +137,122 @@
                                         <td>Operation Body</td>
                                         <td>getServices(pp : ProgramPartner ) : Set(Service)</td>
                                         <td>self.partners->collect(pa | pa.deliveredServices ) ->asSet()</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="jumbotron doc">
+                                <h3 class="page-header">
+                                    Real World Case Study
+                                </h3>
+                                <h:form>
+                                    <p>
+                                        The CRN case study includes one domain model, five model instances and in
+                                        total 10 OCL constraints for specifying cancer coding rules (shown as below).
+                                        Please download the CRN case study <h:commandLink value="here"
+                                                                                          action="#{docs.downloadCaseStudy}"/>.
+
+
+                                    </p>
+                                </h:form>
+                                <br/>
+
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Context</th>
+                                        <th>Type</th>
+                                        <th colspan="4">Constraint</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>CancerMessage</td>
+                                        <td>Invariant</td>
+                                        <td>(self.morfology = '720039' or self.morfology = '730039') implies self.basis = 98
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>CancerMessage</td>
+                                        <td>Invariant</td>
+
+                                        <td>self.topography = '420' implies (self.basis = 33 or self.basis = 38 or self.basis = 45 or self.basis = 47)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>CancerMessage</td>
+                                        <td>Invariant</td>
+
+                                        <td>(self.surgery = 35 or self.surgery = 7 or self.surgery = 9)
+                                            implies (self.messageType = 'H' or self.messageType = 'K' or self.messageType = 'R')
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>CancerMessage</td>
+                                        <td>Invariant</td>
+
+                                        <td>(self.surgery = 7 and self.messageType = 'H') implies (self.basis = 60 or self.basis = 98)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>CancerMessage</td>
+                                        <td>Invariant</td>
+
+                                        <td>( (self.basis=45 or self.basis = 46 or self.basis = 47) implies self.surgery = 99 ) and (self.basis = 2 implies self.surgery &lt;&gt; 10)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">6</th>
+                                        <td>CancerCase</td>
+                                        <td>Invariant</td>
+
+                                        <td>(self.morfology = '7400.09' or self.morfology = '7405.09' or self.morfology = '7410.09')
+                                            implies
+                                            (self.surgery = 1 or self.surgery = 2 or self.surgery = 7 or self.surgery = 10)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">7</th>
+                                        <td>CancerCase</td>
+                                        <td>Invariant</td>
+
+                                        <td>self.basis = 33 implies (self.topography = '42.0' or self.topography = '421')</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">8</th>
+                                        <td>CancerCase</td>
+                                        <td>Invariant</td>
+
+                                        <td>self.surgery = 17 or self.surgery = 18 or self.surgery = 29
+                                            implies
+                                            self.gender = GenderType::Female
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">9</th>
+                                        <td>CancerCase</td>
+                                        <td>Invariant</td>
+
+                                        <td>(self.topography = 'C70' or self.topography = 'C71' or self.topography = 'C72') implies self.surgery &lt;&gt;1</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">10</th>
+                                        <td>CancerCase</td>
+                                        <td>Invariant</td>
+                                        <td>self.surgery = 14 implies (self.topography = '619' or self.topography = '67X' or self.topography = '73X')</td>
                                     </tr>
                                     </tbody>
                                 </table>

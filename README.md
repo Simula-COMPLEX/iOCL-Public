@@ -14,6 +14,8 @@ specification. Interested users can try iOCL at: http://iocl.zen-tools.com/.
 ## Documentation
 1) [User Manual](https://github.com/Simula-TaoGroup/iOCL-Public/raw/master/iOCL%20User%20Manual.pdf)
 2) [Code Documentation](https://github.com/Simula-TaoGroup/iOCL-Public/raw/master/iOCL%20Code%20Documentation.pdf)
+3) [Tool Demonstration](https://www.youtube.com/watch?v=Wgi9YYMp7Q4)
+
 
 ## License
 iOCL is released under version 3 of the [GNU General Public License](http://www.gnu.org/licenses).

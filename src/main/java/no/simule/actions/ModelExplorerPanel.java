@@ -28,9 +28,10 @@ import java.io.Serializable;
 
 @ManagedBean(name = "modelExplorer")
 @SessionScoped
-public class ModelExplorerPanel implements Serializable {
+public class ModelExplorerPanel extends ActionListener {
     private static final long serialVersionUID = 1L;
     private transient static final Logger logger = Logger.getLogger(ModelExplorerPanel.class);
+    private transient TreeNode selectedNode;
 
 
     private transient TreeNode root;
@@ -127,4 +128,11 @@ public class ModelExplorerPanel implements Serializable {
     }
 
 
+    public TreeNode getSelectedNode() {
+        return selectedNode;
+    }
+
+    public void setSelectedNode(TreeNode selectedNode) {
+        this.selectedNode = selectedNode;
+    }
 }
