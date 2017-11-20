@@ -20,7 +20,7 @@ package no.simule.actions;
 import no.simule.models.ModelFile;
 import no.simule.models.cd.*;
 import no.simule.models.enm.EnumStructure;
-import no.simule.reader.ClassDiagramReader;
+import no.simule.reader.ModelReader;
 import no.simule.reader.ModelLoader;
 import no.simule.utils.Mappings;
 import no.simule.utils.iOCLTypes;
@@ -527,7 +527,7 @@ public class QueryListener extends ActionListener {
         property.setContexts(new ArrayList<>());
 
 
-        ClassDiagramReader read = new ClassDiagramReader();
+        ModelReader read = new ModelReader();
         if (stream != null) {
 
             String ext = FilenameUtils.getExtension(name);

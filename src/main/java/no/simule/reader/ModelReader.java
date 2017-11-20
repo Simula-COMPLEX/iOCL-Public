@@ -41,7 +41,7 @@ import java.util.Map;
  */
 
 
-public class ClassDiagramReader implements Serializable {
+public class ModelReader implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -120,6 +120,10 @@ public class ClassDiagramReader implements Serializable {
             if (element.eClass() == UMLPackage.Literals.CLASS) {
                 Class _class = (Class) element;
                 ClassStructure cs = readClass(_class, supperPackage);
+                classMap.put(cs.getName(), cs);
+            } else if (element.eClass() == UMLPackage.Literals.STEREOTYPE) {
+                Stereotype stereotype = (Stereotype) element;
+                ClassStructure cs = readClass(stereotype, supperPackage);
                 classMap.put(cs.getName(), cs);
             } else if (element.eClass() == UMLPackage.Literals.ENUMERATION) {
                 Enumeration enumeration = (Enumeration) element;
